@@ -1,0 +1,80 @@
+.headerContainer{
+    height:80px;
+    width: 100%;
+    display: flex;
+    background-color:#000;
+    align-items: center;
+    position:sticky;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.headerLogoWrapper {
+    width:280px;
+    height: 80px;
+    background-color: #A62B4D;
+}
+
+.headerLogo{
+    width:100%;
+    height: 80px;;
+    background-image: url(../../source/images_webUMEE/logo_default.png);
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+
+.headerLogo:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.headerContext{
+    display: flex;
+    flex:1;
+    justify-content: space-between;
+}
+
+.headerContext div {
+    flex: 1;
+}
+
+.headerSearchInput{
+    margin-left: 20px;
+    margin-right:20px;
+}
+.headerUser{
+    margin-right: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.headerUser:hover {
+    transform: scale(1.2)
+}
+
+.headerUser:hover .userContext {
+    display:block;
+}
+
+.headerCart{
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.headerCart:hover {
+    transform: scale(1.2)
+}
+
+.headerContextCategory {
+    position: relative;
+}
+
+.headerContextCategory:hover .baseDropdown {
+    display: block;
+}
+
+.headerUser:hover .baseDropdown{
+    display: block;
+}

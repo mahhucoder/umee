@@ -1,0 +1,23 @@
+
+@keyframes showDropdown {
+    from {
+        transform:scaleY(0)
+    }
+
+    to {
+        transform:scaleY(1)
+    }
+}
+
+.baseDropdown{
+    position: absolute;
+    background-color:#fff;
+    bottom: calc(0 - 100%);
+    left: 0;
+    width: 100%;
+    padding: 10px 8px;
+    box-sizing: border-box;
+    display: none;
+    transform-origin: top;
+    animation:showDropdown .15s linear;
+}

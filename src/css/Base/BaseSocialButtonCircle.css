@@ -1,0 +1,14 @@
+.socialButtonCircle {
+    background-color: #3B3B3B;
+    height: 40px;
+    width: 40px;
+    border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.socialButtonCircle:hover{
+    background-color: #595959
+}

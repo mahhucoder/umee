@@ -1,0 +1,51 @@
+.inputIconContainer{
+    background-color: #fff;
+    display: flex;
+    height:40px;
+    width:300px;
+    align-items: center;
+    padding:0 10px;
+    box-sizing: border-box;
+    border-radius:4px;
+}
+.iconInput{
+    cursor: pointer;
+}
+
+@keyframes iconShake {
+    0% {
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(30deg)
+    }
+
+    50% {
+        transform: rotate(-30deg)
+    }
+
+    75% {
+        transform: rotate(0)
+    }
+
+    100% {
+        transform: rotate(0)
+    }
+}
+
+.iconInput:hover {
+    animation-name:iconShake;
+    animation-duration:0.5s;
+    animation-iteration-count:infinite;
+}
+
+.inputWithIcon{
+    height:40px;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    flex:1;
+    padding-left:12px;
+    font-size:16px
+}

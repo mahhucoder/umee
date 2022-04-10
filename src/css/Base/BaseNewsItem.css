@@ -1,0 +1,28 @@
+.baseNewsItem{
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.baseNewsItemText{
+
+}
+
+.baseNewsItemTitLe{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.baseNewsItemDescription{
+
+}
+.baseNewsItemImage{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-width:200px;
+    height: 120px;
+}

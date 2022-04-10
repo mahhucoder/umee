@@ -1,0 +1,80 @@
+.registerBackground{
+    background-image: url(../../source/images_webUMEE/background_dk_dn.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+.registerFormWrapper{
+    background-color: rgba(0, 0, 0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:80px 0px;
+    box-sizing: border-box;
+    height: 100%;
+}
+.registerTitle{
+    color: #fff;
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:8px
+}
+.registerForm{
+    display: flex;
+    width:40%;
+    justify-content:space-between;
+}
+.registerMessage{
+    color:#fff;
+    margin-bottom: 24px;
+    width:40%;
+    white-space: nowrap;
+}
+
+.registerFormLeft{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between
+}
+
+.registerFormRight{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.registerFormButton {
+    margin-top: 4px;
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:space-between
+}
+
+.registerFormSubmit {
+    position:absolute;
+    bottom: 0;
+}
+
+.registerSocialButton {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.registerFuncExt{
+    display: flex;
+    margin-top: 10px;
+}
+
+.registerFuncExtMsg{
+    color:#fff;
+}
+
+.registerNavigateLogin{
+    color:#b74062;
+    cursor:pointer;
+    margin-left:8px
+}

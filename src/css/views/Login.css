@@ -1,0 +1,75 @@
+.loginBackground{
+    background-image: url(../../source/images_webUMEE/background_dk_dn.png);
+    width: 100%;
+    flex: 1;
+    display: flex;
+}
+.loginFormWrapper{
+    background-color: rgba(0, 0, 0,0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content:center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    flex:1
+}
+.loginTitle{
+    color: #fff;
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:24px
+}
+.loginForm{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.loginButtonSocial {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items:center;
+    justify-content:center
+}
+
+.loginForgotPassword{
+    color: #fff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.loginForgotPassword:hover{
+    opacity: 0.8;
+}
+
+.loginButtonWrapper{
+    margin-top:16px;
+    margin-bottom: 120px;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.loginFuncExt{
+    display: flex;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.loginNavigateRegister{
+    color: #b74062;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.loginNavigateRegister:hover {
+    opacity: 0.8
+}
+
+.loginErrorMsg {
+    color: red;
+}

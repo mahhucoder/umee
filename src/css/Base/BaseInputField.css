@@ -1,0 +1,33 @@
+.inputFieldWrapper{
+    margin-bottom: 8px;
+    position: relative;
+}
+.inputFieldTitle{
+    color: #fff;
+    margin-bottom: 4px;
+}
+.inputField{
+    height: 32px;
+    outline: none;
+    font-size:16px;
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+
+.inputIconVAlid {
+    position:absolute;
+    top: 32px;
+    right: 8px;
+    /* display: none; */
+}
+
+.inputValid .inputField {
+    outline: 3px solid red
+}
+.inputValid .inputFieldTitle {
+    color: red;
+}
+
+.inputValid .inputIconVAlid {
+    display:block
+}

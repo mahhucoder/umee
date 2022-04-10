@@ -1,0 +1,18 @@
+.baseHeaderContextItem {
+    text-align: center;
+    line-height:80px;
+    border-left: 1px solid rgb(143, 143, 143);
+    border-right: 1px solid rgb(143, 143, 143);
+    background-color:#000;
+    padding:0px 16px;
+    color:#fff;
+    min-width: 160px;
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.baseHeaderContextItem:hover {
+    background-color: rgba(71, 71, 71, 0.8);
+    cursor: pointer;
+}

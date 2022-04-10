@@ -1,0 +1,14 @@
+.baseDateInputWrapper{
+    box-sizing: border-box;
+}
+.baseDateInputTitle{
+    color: #fff;
+    margin-bottom: 4px;
+}
+.baseDateInput{
+    cursor: pointer;
+    box-sizing: border-box;
+    height:32px;
+    width: 160px;
+    outline: none;
+}

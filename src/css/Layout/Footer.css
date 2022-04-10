@@ -1,0 +1,70 @@
+.footerContainer {
+    background-color:#333333;
+    height: 300px;
+    display: flex;
+    justify-content:space-between;
+    padding: 40px 80px 0px 80px;
+    box-sizing: border-box;
+}
+
+.footerLeft{
+    display: flex;
+    justify-content: space-between;
+    flex:1;
+}
+
+.footerNews{
+    color:#979797;
+    font-size:20px;
+    margin-bottom: 10px;
+    font-weight:bold;
+    cursor: pointer;
+    margin-left: 20px;
+    white-space: nowrap;
+}
+
+.footerSupport{
+    color:#979797;
+    font-size:20px;
+    margin-bottom: 10px;
+    font-weight:bold;
+    cursor: pointer;
+    margin-left: 20px;
+    white-space: nowrap;
+}
+
+.footerNews:hover, .footerSupport:hover, .footerLinkWeb:hover {
+    color:#fff
+}
+
+.footerRight{
+    margin-left: 320px;
+    text-align: center;
+}
+
+.footerLogo {
+    width:200px;
+    height:60px;
+    background-image: url(../../source/images_webUMEE/logo_default.png);
+    background-position:center;
+}
+
+.footerLinkWeb{
+    color:#979797;
+    text-decoration:underline;
+    cursor: pointer;
+}
+
+.footerSocial{
+    display: flex;
+    margin-top: 16px;
+    justify-content: space-around;
+}
+
+.contactButtonGroup {
+    width: 60px;
+    position:fixed;
+    z-index: 99;
+    bottom: 100px;
+    right: 24px;
+}

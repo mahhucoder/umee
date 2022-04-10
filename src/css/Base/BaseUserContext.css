@@ -1,0 +1,40 @@
+@keyframes showUserContext {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+.userContext{
+    background-color: #fff;
+    position:absolute;
+    top:calc(100% + 10px);
+    width:100px;
+    left: -50px;
+    text-align: center;
+    padding:4px;
+    display:none;
+    animation:showUserContext 0.2s linear;
+    transform-origin: 50% 0%;
+    border-radius:4px
+}
+
+.userContext::after{
+    content: "";
+    top: -18px;
+    position: absolute;
+    border:10px solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.userContextItem{
+    padding:2px;
+}
+
+.userContextItem:hover {
+    opacity:0.8;
+    background-color:rgb(240, 240, 240)
+}

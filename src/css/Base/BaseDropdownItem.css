@@ -1,0 +1,14 @@
+.baseDropdownItem {
+    height: 32px;
+    line-height: 32px;
+    border-top: 1px solid #ccc;
+    cursor: pointer;
+    font-weight: 400;
+    font-size:16px
+}
+
+.baseDropdownItem:hover {
+    background-color: rgb(219, 219, 219);
+    font-size: 18px;
+    font-weight: 500;
+}

@@ -1,0 +1,37 @@
+.baseRadioItemWrapper{
+    display:flex;
+    margin-right:10px;
+}
+
+.baseRadioItemDisplay{
+    color: white;
+    margin-right:4px;
+}
+
+.baseRadioItem{
+    width:20px;
+    height:20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:2px;
+    cursor: pointer;
+}
+
+.baseRadioItemInside{
+    width:100%;
+    height:100%;
+    background-color: #fff;
+    border-radius: 50%;
+    display:none;
+}
+
+.baseRadioItemSelected{
+    display:block;
+}
+
+.baseRadioItem:hover .baseRadioItemInside {
+    display:block;
+}

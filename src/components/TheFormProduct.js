@@ -11,8 +11,7 @@ import ImageLoadFailed from "../source/images_webUMEE/image_load_failed.png"
 import { DataBaseContext } from '../Context/DataBase';
 import BaseDropdown from './Base/BaseDropDown';
 import Guid from 'guid';
-import { getStorage, ref } from 'firebase/storage';
-import { HalfMalf, SlidingPebbles } from 'react-spinner-animated';
+import { SlidingPebbles } from 'react-spinner-animated';
 
 const TheFormProduct = (props) => {
 
@@ -20,12 +19,11 @@ const TheFormProduct = (props) => {
     const [requireImageMsg,setRequireImageMsg] = useState(null)
     const {setShowForm,id,setRefresh} = props
     const [imageIndex,setImageIndex] = useState(0)
-    const {getProductById,getCategories,postImageToStorage,insertEntity,listImage,getImageByProId,setListImage} = useContext(DataBaseContext)
+    const {getProductById,getCategories,postImageToStorage,insertEntity,listImage,getImageByProId} = useContext(DataBaseContext)
     const [categories,setCategories] = useState([])
     const [isLoading,setIsLoading] = useState(true)
     const [productEdit,setProductEdit] = useState(null)
-
-    const storage = getStorage()
+    const [listImageForm,setListImageForm] = useState([])
 
     const productFormik = useFormik({
         initialValues:{
@@ -51,39 +49,45 @@ const TheFormProduct = (props) => {
                 return  setRequireImageMsg("Hãy chọn ảnh minh họa cho sản phẩm");
 
             setIsLoading(true)
-            const promises = []
-            const id = Guid.create().value
-            postImageToStorage(imageFile,"product images/")
-                .then(res => {
-                    const newProduct = {
-                        "productId": id,
-                        "productName": values.ProductName,
-                        "categoryId": values.CategoryId,
-                        "amount": values.Amount,
-                        "sold": values.Sold,
-                        "description": values.Description,
-                        "price": values.Price,
-                        "imageUrl": res,
-                    }
 
-                    console.log(newProduct)
-
-                    const insert = insertEntity("Product",newProduct)
-
-                    listImage.forEach(({file}) => {
-                        const postImage = postImageToStorage(file,`${id}/`)
-
-                        promises.push(postImage)
-                    })
-
-                    Promise.all(promises)
-                        .then((res) =>{
-                            setIsLoading(false)
-                            setRefresh(pre => !pre)
-                            setShowForm(false)
+            if(!id){
+                const promises = []
+                const idNewProduct = Guid.create().value
+                postImageToStorage(imageFile,"product images/")
+                    .then(res => {
+                        const newProduct = {
+                            "productId": idNewProduct,
+                            "productName": values.ProductName,
+                            "categoryId": values.CategoryId,
+                            "amount": values.Amount,
+                            "sold": values.Sold,
+                            "description": values.Description,
+                            "price": values.Price,
+                            "imageUrl": res,
+                        }
+    
+                        const insert = insertEntity("Product",newProduct)
+    
+                        listImageForm.forEach(({file}) => {
+                            const postImage = postImageToStorage(file,`${idNewProduct}/`)
+    
+                            promises.push(postImage)
                         })
-                        .catch((err) => console.log(err))
-                })
+    
+                        Promise.all(promises)
+                            .then((res) =>{
+                                setIsLoading(false)
+                                setRefresh(pre => !pre)
+                                setShowForm(false)
+                            })
+                            .catch((err) => console.log(err))
+                    })
+            }
+
+            console.log(values)
+
+            console.log(listImageForm)
+            console.log(imageFile)
         }
     })
 
@@ -109,39 +113,44 @@ const TheFormProduct = (props) => {
             newList.push(newImageObject)
         }
 
-        setListImage([...listImage, ...newList])
+        setListImageForm([...listImageForm, ...newList])
     }
 
     const handleDeleteImage = () => {
-        const newList = listImage.filter((image,index) => index != imageIndex)
+        const newList = listImageForm.filter((image,index) => index != imageIndex)
 
-        setListImage(newList)
-        setImageIndex(imageIndex - 1)
+        setListImageForm(newList)
+        setImageIndex(0)
     }
 
     useEffect(() => {
 
         if(id){
-            const getProduct = getProductById(id)
-
-            const getImages = getImageByProId(id)
-
-            Promise.all([getProduct,getImages])
-                .then(res => {
-                    const {ProductName,CategoryId,Amount,Sold,Description,Price,ImageUrl} = res[0]
-
-                    setProductEdit(res[0])
-                    productFormik.values.ProductName = ProductName
-                    productFormik.values.CategoryId = CategoryId
-                    productFormik.values.Amount = Amount
-                    productFormik.values.Sold = Sold
-                    productFormik.values.Description = Description
-                    productFormik.values.Price = Price
-                    setImageFile(ImageUrl)
+            getProductById(id)
+            .then(res => {
+                const {ProductName,CategoryId,Amount,Sold,Description,Price,ImageUrl} = res
+    
+                setProductEdit(res)
+                productFormik.values.ProductName = ProductName
+                productFormik.values.CategoryId = CategoryId
+                productFormik.values.Amount = Amount
+                productFormik.values.Sold = Sold
+                productFormik.values.Description = Description
+                productFormik.values.Price = Price
+                setImageFile(ImageUrl)
+            })
+    
+            getImageByProId(id)
+                .then((images) => {
+                    console.log(id)
+                    images.forEach((image) => {
+                        setListImageForm(pre => [...pre,{url: image,file:""}])
+                    })
 
                     setIsLoading(false)
                 })
-        }
+        }else
+            setIsLoading(false)
 
         getCategories()
             .then((ctg) => {
@@ -151,7 +160,6 @@ const TheFormProduct = (props) => {
                 }
             })
             .catch((err) => console.log(err))
-
     },[id])
 
     return (
@@ -261,7 +269,7 @@ const TheFormProduct = (props) => {
                             <div className="theFormProductImageDetailField">
                                 <div>Ảnh mô tả chi tiết : </div>
                                 <div 
-                                    style={{backgroundImage:`url("${listImage.length > 0 ? listImage[imageIndex] : ImageLoadFailed}")`}} 
+                                    style={{backgroundImage:`url("${listImageForm.length > 0 ? listImageForm[imageIndex].url : ImageLoadFailed}")`}} 
                                     className="theFormProductImageDetailArea"
                                 >
                                 </div>
@@ -269,8 +277,8 @@ const TheFormProduct = (props) => {
 
                             <div className="theFormProductListImage">
                                 {
-                                    listImage.map((image,index) => 
-                                        <BaseImageItem selectImage={() => setImageIndex(index)} isSelected={imageIndex == index} key={index} url={image} />)
+                                    listImageForm.map((image,index) => 
+                                        <BaseImageItem selectImage={() => setImageIndex(index)} isSelected={imageIndex == index} key={index} url={image.url} />)
                                 }
                             </div>
                         </div>
@@ -286,7 +294,7 @@ const TheFormProduct = (props) => {
                                 <BaseButton bgColor="#fff" width={120} text="Thêm" color="#000" border="1px solid #000" />
                             </label>
                             <BaseButton method={() => handleDeleteImage()} bgColor="#fff" width={120} text="Xóa" color="#000" border="1px solid #000" />
-                            <BaseButton method={() => setListImage([])} bgColor="#fff" width={120} text="Xóa hết" color="#000" border="1px solid #000" />
+                            <BaseButton method={() => setListImageForm([])} bgColor="#fff" width={120} text="Xóa hết" color="#000" border="1px solid #000" />
                         </div>
                     </div>
                 </div>

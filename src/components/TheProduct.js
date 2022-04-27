@@ -7,6 +7,8 @@ import "../css/TheProduct.css"
 import ThePreviewProduct from './ThePreviewProduct';
 import TheFormProduct from './TheFormProduct';
 import { DataBaseContext } from '../Context/DataBase';
+import { deleteObject, getStorage, ref } from 'firebase/storage';
+import { SlidingPebbles } from 'react-spinner-animated';
 
 const TheProduct = () => {
 
@@ -18,11 +20,44 @@ const TheProduct = () => {
     const [idProductEdit,setIdProductEdit] = useState(null)
     const [listProductSelected,setListProductSelected] = useState([])
     const [keyword,setKeyword] = useState('')
-    const {deleteCategory,search} = useContext(DataBaseContext)
+    const {deleteEntity,search} = useContext(DataBaseContext)
+    const [isLoading,setIsLoading] = useState(false)
+
+    const storage = getStorage()
 
     const handleToggleEdit = (id) => {
         setIdProductEdit(id)
         setIsShowForm(true)
+    }
+
+    const handleDeleteProduct = () => {
+        setIsLoading(true)
+        const promises = []
+
+        listProductSelected.forEach((product) => {
+            const deleteProduct = deleteEntity("Product",product["ProductId"])
+
+            const imageRef = ref(storage,product["ImageUrl"])
+
+            const folderImageRef = ref(storage,`${product["ProductId"]}/`)
+
+            const deleteImageRef = deleteObject(imageRef)
+
+            const deleteFolderImageRef = deleteObject(folderImageRef)
+
+            promises.push(deleteImageRef)
+            promises.push(deleteFolderImageRef)
+            promises.push(deleteProduct)
+        })
+
+        Promise.all(promises).then(() => {
+            setIsLoading(false)
+            setRefresh(!refresh)
+            setListProductSelected([])
+            setIsShowTrash(false)
+        }).catch(err => {
+            alert("Hãy F5 !")
+        })
     }
 
     const handleSearch = () => {
@@ -39,6 +74,13 @@ const TheProduct = () => {
                 isShowForm ? <TheFormProduct setRefresh={setRefresh} id={idProductEdit} setShowForm={setIsShowForm} /> : null
             }
 
+            {isLoading ? 
+                <div className="loading">
+                    <SlidingPebbles color="white" text="Chờ xíu nhoa <3" bgColor="#A62B4D" />
+                </div>
+                : null
+            }
+
             <div className="theProductTitle">Danh sách sản phẩm</div>
 
             <div className="theProductFunc">
@@ -49,7 +91,7 @@ const TheProduct = () => {
                         <FaInfo size={20} />
                     </div>
 
-                    <div style={{"display":isShowTrash ? "flex" : "none"}} className="theProductIconButton">
+                    <div onClick={handleDeleteProduct} style={{"display":isShowTrash ? "flex" : "none"}} className="theProductIconButton">
                         <FaTrash size={20} />
                     </div>
 

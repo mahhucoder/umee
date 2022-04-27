@@ -21,18 +21,23 @@ const DataBase = ({children}) => {
             const listRef = ref(storage,`${productId}/`)
             
             listAll(listRef).then((res) => {
+                const promises = []
+
                 res.items.forEach((itemRef) => {
-                    getDownloadURL(itemRef)
-                    .then((url) => {
-                        setListImage(pre => [...pre,url])
-                    }).catch(error => console.log(error))
+                    const getUrl = getDownloadURL(itemRef)
+                    promises.push(getUrl)
                 })
-            
-                resolve()
-                }).catch((error) => {
-                    reject(error)
-                })
+
+                Promise.all(promises)
+                    .then(res => {
+                        setListImage(res)
+                        resolve(res)
+                    })
+            }).catch((error) => {
+                reject(error)
+            })
         })
+
     }
 
     const getProductById = (id) => {

@@ -5,6 +5,7 @@
     justify-content:space-between;
     padding: 40px 80px 0px 80px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .footerLeft{
@@ -67,4 +68,33 @@
     z-index: 99;
     bottom: 100px;
     right: 24px;
+}
+
+.footerBottom {
+    position: absolute;
+    bottom: 0;
+    background-color: #292929;
+    width: 100%;
+    left: 0;
+    height: 72px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 80px 0px 80px;
+    box-sizing: border-box;
+}
+
+.footerCarTruck, .footerService, .footerFeeling{
+    display: flex;
+}
+
+.carTruckTitle, .serviceTitle, .feelingTitle{
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.carTruckSlogan, .feelingSlogan, .serviceSlogan{
+    margin-left: 10px;
+    font-size: 14px;
 }

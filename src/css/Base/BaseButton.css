@@ -7,9 +7,9 @@
     /* border: 1px solid #000; */
     background-color:#A62B4D;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .baseButton:hover {
     opacity: 0.8;
-    color: #fff;
 }

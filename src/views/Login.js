@@ -48,6 +48,9 @@ const TheLogin = () => {
                     if(err == "auth/wrong-password")
                         setErrorMessage("Sai mật khẩu")
                 
+                    if(err == "auth/network-request-failed")
+                        alert("Kiểm tra kết nối mạng và thử lại !")
+                    
                     setIsLoading(false)
 
                     console.log(err)

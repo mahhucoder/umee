@@ -1,0 +1,48 @@
+.accountPageContainer{
+    width: 100%;
+    padding:0px 40px;
+    /* background:red; */
+}
+.accountPageHeader{
+    height:72px;
+    line-height: 72px;
+    border-bottom: 2px solid #000;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+.accountPageForm{
+    display: flex;
+    /* justify-content:space-around; */
+    /* padding:0px 20%; */
+}
+.accountFormTitle{
+    font-size:16px;
+    font-weight: 700;
+    /* text-align: center; */
+    margin-bottom: 36px;
+}
+.accountPageFormLeft{
+    margin-right: 16px;
+}
+.accountPageFormRight{
+    margin-right: 16px;
+}
+
+.accountPageFormButton {
+    width:160px;
+}
+
+.accountPageFormButton div {
+    margin-bottom:4px
+}
+
+.receiptTitle {
+    font-size:16px;
+    font-weight: 700;
+    margin:12px 0px 12px 0px
+}
+
+.accountPageReceiptTable {
+    margin-bottom:40px;
+}

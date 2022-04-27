@@ -8,12 +8,32 @@
     top: 0;
     left: 0;
     z-index: 99;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
 }
 
 .headerLogoWrapper {
-    width:280px;
+    min-width:260px;
     height: 80px;
     background-color: #A62B4D;
+    box-sizing: border-box;
+}
+
+.headerText{
+    color: #fff;
+    display: flex;
+    width: 100%;
+    justify-content:space-between;
+    padding:0px 32px;
+    font-size:20px;
+    font-weight: 400;
+}
+
+.headerAdminName{
+    
+}
+.headerShopName{
+
 }
 
 .headerLogo{
@@ -71,10 +91,10 @@
     position: relative;
 }
 
-.headerContextCategory:hover .baseDropdown {
+.headerContextCategory:hover .baseMenuDrop {
     display: block;
 }
 
-.headerUser:hover .baseDropdown{
+.headerUser:hover .baseMenuDrop{
     display: block;
 }

@@ -1,0 +1,21 @@
+.baseAdminContext{
+    border-bottom: 1px solid #fff;
+    height:56px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    text-align: left;
+    line-height:56px;
+    padding:0px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.baseAdminContext:hover {
+    background-color: rgb(100, 100, 100);
+}
+
+.adminContextDisplay {
+    flex: 1
+}

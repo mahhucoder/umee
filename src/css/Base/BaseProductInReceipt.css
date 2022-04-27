@@ -1,0 +1,41 @@
+.baseProductDetailInReceipt{
+    margin-bottom:16px;
+}
+
+.baseProductDetailInReceiptInfo{
+    display:flex;
+}
+
+.baseProductDetailInReceiptImage{
+    height:100px;
+    min-width:120px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 8px;
+    border:1px solid #000;
+}
+
+.baseProductDetailInReceiptText{
+    width: 100%;
+    position: relative;
+}
+
+.baseProductDetailInReceiptName{
+    margin:0px
+}
+
+.baseProductDetailInReceiptPrice{
+
+}
+
+.baseProductDetailInReceiptAmount{
+    font-size: 16px;
+    font-weight: bold
+}
+
+.baseProductDetailInReceiptDatabase{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

@@ -1,0 +1,18 @@
+.notFound{
+    width: 100%;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.notFoundTitle {
+    font-weight: bold;
+    font-size:120px
+}
+
+.notFoundMsg{
+    font-size: 24px;
+    font-style: italic;
+}

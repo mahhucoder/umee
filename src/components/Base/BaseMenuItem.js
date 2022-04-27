@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import "../../css/Base/BaseDropdownItem.css"
+import "../../css/Base/BaseMenuItem.css"
 
-const BaseDropdownItem = props => {
+const BaseMenuItem = props => {
 
     const {text} = props
 
     return (
-        <div className="baseDropdownItem">
+        <div className="baseMenuItem">
             {text}
         </div>
     );
 };
 
-BaseDropdownItem.propTypes = {
+BaseMenuItem.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-export default BaseDropdownItem;
+export default BaseMenuItem;

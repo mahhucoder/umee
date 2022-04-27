@@ -1,0 +1,27 @@
+.baseTextAreaWrapper{
+
+}
+.baseTextAreaTitle{
+
+}
+.baseTextArea{
+    resize: none;
+    outline: none;
+    text-indent: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.baseTextArea::-webkit-scrollbar{
+    width: 5px;
+}
+
+.baseTextArea::-webkit-scrollbar-thumb {
+    background: #A62B4D; 
+    border-radius: 10px;
+  }
+  
+.baseTextArea::-webkit-scrollbar-thumb:hover {
+    background: #A62B4D; 
+}

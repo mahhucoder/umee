@@ -4,10 +4,12 @@ import "../../css/Base/BaseButton.css"
 
 const BaseButton = props => {
     
-    const {text,method,width,bgColor,color} = props
+    const {text,method,width,bgColor,color,border,style} = props
     
     return (
-        <div style={{"width":width+"px","backgroundColor":bgColor,"color":color}} onClick={method} className="baseButton">
+        <div style={{"width":width+"px","backgroundColor":bgColor,"color":color,border:border ? border : "none",...style}} 
+            onClick={method} className="baseButton"
+        >
             {text}
         </div>
     );

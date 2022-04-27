@@ -1,0 +1,13 @@
+.theFormProductImage{
+    min-width: 100px;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.imageProductSelected {
+    border:3px solid #A62B4D
+}

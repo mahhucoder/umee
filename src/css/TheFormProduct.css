@@ -1,0 +1,135 @@
+.theFormProductBg{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color:rgba(0, 0, 0, 0.8);
+    z-index: 103;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theFormProductWrapper{
+    background-color:#fff;
+    max-width: 1200px;
+    min-width: 1000px;
+    max-height:600px;
+    min-height:500px;
+    border-radius:4px;
+    padding:20px 40px;
+}
+
+.theFormProduct{
+    display: flex;
+    /* height: 396px; */
+}
+
+.theFormProductTitle {
+    text-align: center;
+    font-size:24px;
+    font-weight:bold;
+    color:#A62B4D;
+    margin-bottom: 40px;
+}
+
+.theFormProductCenter {
+    margin:0px 8px;
+}
+
+.theFormProductImageField{
+    width: 240px;
+    position: relative;
+}
+
+.theFormProductImageArea{
+    width:240px;
+    height:240px;
+    border:1px solid #000;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+    position: relative;
+}
+
+.custom-file-upload{
+    position:absolute;
+    top: 45%;
+    left: 40%;
+    cursor: pointer;
+}
+
+.theFormProductImageInput{
+    display: none;
+}
+
+.theFormProductRight{
+    flex:1;
+    /* padding-top: 24px; */
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    height: 100%;
+    padding-left: 20px;
+}
+
+.theFormProductImagesWrapper{
+    /* display: flex; */
+}
+.theFormProductImageDetailField{
+}
+
+.theFormProductImageDetailArea{
+    width: 480px;
+    height: 280px;
+    border: 1px solid #000;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.theFormProductListImage {
+    width: 480px;
+    margin-top:15px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    height: 70px;
+    border:1px solid #000;
+    padding-bottom: 5px;
+    background-image: url(../source/images_webUMEE/icon_tag.ico);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+}
+
+.theFormProductListImage::-webkit-scrollbar{
+    height: 5px;
+}
+
+.theFormProductListImage::-webkit-scrollbar-thumb {
+    background: #A62B4D; 
+    border-radius: 10px;
+  }
+  
+.theFormProductListImage::-webkit-scrollbar-thumb:hover {
+    background: #A62B4D; 
+}
+
+.theFormProductImageFuc{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 16px;
+}
+
+.theFormProductButton {
+    display: flex;
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+
+.theFormProductButton > div {
+    margin-left: 8px;
+}

@@ -32,6 +32,7 @@
 
 .userContextItem{
     padding:2px;
+    text-align: left;
 }
 
 .userContextItem:hover {

@@ -1,0 +1,25 @@
+.checkboxTable{
+    width:32px;
+    height:32px;
+    margin:0px auto;
+    border:1px solid #A62B4D;
+    border-radius:4px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.checkboxTableInside{
+    width: 23px;
+    height: 23px;
+    background-color: #A62B4D;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.editRowTable {
+    color: #A62B4D;
+    text-decoration: underline;
+    cursor: pointer;
+}

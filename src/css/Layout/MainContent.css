@@ -1,7 +1,8 @@
 .mainContentContainer{
-    flex: 1;
     display: flex;
-    /* padding-bottom: 24px; */
     background-color:#E4E4E4;
     justify-content: center;
+    width: 100%;
+    flex:1;
+    box-sizing: border-box;
 }

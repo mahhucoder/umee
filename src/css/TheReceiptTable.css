@@ -1,0 +1,29 @@
+.theReceiptTable{
+    width: 100%;
+}
+
+.theReceiptTable thead td {
+    white-space: nowrap;
+    border-left: 1px solid #fff;
+    background-color: #A62B4D;
+    color: #fff;
+    font-size:16px;
+    padding:4px 0px;
+}
+
+.theReceiptTable thead td:first-child {
+    border-left: none;
+}
+
+.theReceiptTable tbody td {
+    white-space: nowrap;
+    border-left:1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.theReceiptTable tbody td:first-child {
+    border-left: none;
+    cursor: pointer;
+    color:#A62B4D;
+    text-decoration: underline;
+}

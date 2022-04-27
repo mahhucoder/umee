@@ -1,4 +1,4 @@
-.baseDropdownItem {
+.baseMenuItem {
     height: 32px;
     line-height: 32px;
     border-top: 1px solid #ccc;
@@ -7,7 +7,7 @@
     font-size:16px
 }
 
-.baseDropdownItem:hover {
+.baseMenuItem:hover {
     background-color: rgb(219, 219, 219);
     font-size: 18px;
     font-weight: 500;

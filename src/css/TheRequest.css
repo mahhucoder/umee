@@ -1,0 +1,33 @@
+.theRequest{
+    height: 100%;
+}
+
+.theRequestTitle{
+    font-size:24px;
+    font-weight:500;
+    margin-bottom:16px;
+    color:#A62B4D
+}
+
+.theRequestFunc{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.theRequestIconButtonWrapper{
+    display:flex;
+}
+
+.theRequestIconButton{
+    background-color: #FFFF;
+    width:40px;
+    height:40px;
+    margin-left:10px;
+    box-sizing: border-box;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:4px;
+    cursor: pointer;
+}

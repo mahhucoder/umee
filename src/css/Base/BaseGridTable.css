@@ -1,0 +1,108 @@
+.baseGridTableWrapper {
+    height: calc(100vh - 232px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.baseGridTable{
+    width: 100%;
+    margin-top:24px;
+    overflow:scroll;
+    display:block;
+    min-height:100px;
+}
+
+.baseGridTable::-webkit-scrollbar{
+    width: 5px;
+    height: 8px;
+    margin-top:4px
+}
+
+
+.baseGridTable::-webkit-scrollbar-thumb {
+    background: #A62B4D; 
+    border-radius: 10px;
+  }
+  
+.baseGridTable::-webkit-scrollbar-thumb:hover {
+    background: #ab2148; 
+}
+    
+.baseGridTable tbody {
+    position: relative;
+}
+
+.baseGridTable thead td {
+    white-space: nowrap;
+    border-left: 1px solid #fff;
+    background-color: #A62B4D;
+    color: #fff;
+    font-size:16px;
+    padding:4px 4px;
+    min-width: 105.9px;
+}
+
+.baseGridTable tr {
+    max-height:40px;
+}
+
+.baseGridTable thead td:first-child,.baseGridTable tbody td:first-child {
+    border-left: none;
+    width:56px;
+    position:sticky;
+    left: 0;
+    z-index: 99;
+}
+
+.baseGridTable thead td:first-child {
+    border-right: 1px solid #fff;
+}
+
+.baseGridTable tbody td:first-child {
+    background-color:#E4E4E4;
+    border-right: 1px solid #000;
+}
+
+.baseGridTable thead td:nth-child(2) {
+    border-left: none;
+}
+
+.baseGridTable tbody td:nth-child(2) {
+    border-left: none;
+}
+
+.baseGridTable tbody td {
+    padding:2px 4px;
+    box-sizing: border-box;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.baseGridTable tbody td {
+    white-space: nowrap;
+    border-left:1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.baseGridTable thead td:last-child, .baseGridTable tbody td:last-child{
+    min-width:56px;
+    position:sticky;
+    right: 0;
+    z-index: 99;
+}
+
+.baseGridTable tbody td:last-child {
+    background-color:#E4E4E4;
+}
+
+.emptyTable {
+    position: absolute;
+    width: 100%;
+    border:1px solid #000;
+    box-sizing: border-box;
+    padding:8px;
+    font-size:24px;
+    text-align:center;
+}

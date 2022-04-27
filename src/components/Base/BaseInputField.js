@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import "../../css/Base/BaseInputField.css"
 import { FaExclamation } from "react-icons/fa";
-import { Formik } from 'formik';
 
 const BaseInputField = props => {
 
-    const {name, width,type,formik,title} = props;
+    const {name, width,type,formik,title,titleColor,height} = props;
 
     return (
-        <div className="inputFieldWrapper">
-            <div className="inputFieldTitle">{title} :</div>
+        <div style={{"width":width+"px"}} className="inputFieldWrapper">
+            <div style={{color: titleColor}} className="inputFieldTitle">{title} :</div>
             <input
+                min={0}
                 name={name}
+                type={type} 
                 value={formik.values[name]}
-                type={type == "email" ? "email" : type == "password" ? "password" : "text"} 
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                style={{"width":width+"px",}}
+                style={{"width":width+"px","height":height+"px"}}
                 className="inputField"
             />
 

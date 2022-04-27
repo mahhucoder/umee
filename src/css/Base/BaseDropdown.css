@@ -1,3 +1,30 @@
+.baseDropDown{
+    margin-bottom: 8px;
+}
+.baseDropDownTitle{
+    margin-bottom:4px
+}
+.baseDropDownInputWrapper{
+    height:32px;
+    border-radius: 2px;
+    border: 1px solid #000;
+    display:flex;
+    align-items: center;
+    position: relative;
+}
+.baseDropDownInput{
+    outline: none;
+    width:100%;
+    box-sizing: border-box;
+    height:32px;
+    border-radius: 2px;
+    border:none;
+    text-indent: 10px;
+}
+
+.baseDropDownArrow {
+    cursor: pointer;
+}
 
 @keyframes showDropdown {
     from {
@@ -9,15 +36,27 @@
     }
 }
 
-.baseDropdown{
+.baseDropDownList{
     position: absolute;
-    background-color:#fff;
-    bottom: calc(0 - 100%);
-    left: 0;
-    width: 100%;
-    padding: 10px 8px;
-    box-sizing: border-box;
-    display: none;
-    transform-origin: top;
+    width: calc(100%);
+    top: 100%;
+    left:0;
     animation:showDropdown .15s linear;
+    transform-origin: top;
+    background-color: #fff;
+    padding:8px 4px;
+    border:1px solid #000;
+    box-sizing: border-box;
+}
+
+.baseDropDownItem{
+    cursor: pointer;
+    height:32px;
+    line-height: 32px;
+    font-size: 16px;
+    padding-left: 4px;
+}
+
+.baseDropDownItem:hover {
+    background-color: rgb(205, 205, 205)
 }

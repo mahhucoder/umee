@@ -4,7 +4,7 @@ import {FaExclamation,FaAngleDown} from 'react-icons/fa'
 
 const BaseDropdown = (props) => {
 
-    const {title,width,titleColor,name,formik,list} = props
+    const {title,width,titleColor,name,formik,list,value} = props
     const [isShow,setIsShow] = useState(false)
     const [text,setText] = useState('')
 
@@ -16,15 +16,13 @@ const BaseDropdown = (props) => {
 
     useEffect(() => {
 
-        const value = formik.values[name]
-
         const itemSelected = list.find(item => item.value == value)
 
         if(itemSelected) {
             setText(itemSelected["display"])
         }
 
-    },[list])
+    },[value])
 
     return (
         <div className="baseDropDown">
@@ -37,6 +35,7 @@ const BaseDropdown = (props) => {
                     value={text}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    disabled
                 />
 
                 <div onClick={() => setIsShow(!isShow)} className="baseDropDownArrow">

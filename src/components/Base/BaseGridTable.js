@@ -7,7 +7,7 @@ const BaseGridTable = (props) => {
 
     const {entityApi,entity,showTrash,setIdPreview,refresh,handleToggleEdit,setListItem,listItemSelected} = props
 
-    const {data,fetchData,search} = useContext(DataBaseContext)
+    const {data,fetchData} = useContext(DataBaseContext)
     const [fields,setFields] = useState(Object.keys(entity))
 
     const addItemSelected = (item) => {

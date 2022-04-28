@@ -4,7 +4,6 @@ import { DataBaseContext } from '../Context/DataBase';
 import "../css/ThePreviewProduct.css"
 import {BsArrowsAngleContract} from "react-icons/bs"
 import ImageLoadFailed from "../source/images_webUMEE/image_load_failed.png"
-import { getStorage} from 'firebase/storage';
 
 const ThePreviewProduct = (props) => {
 
@@ -13,30 +12,16 @@ const ThePreviewProduct = (props) => {
     const [isLoading,setIsLoading] = useState(true)
     const [currentImage,setCurrentImage] = useState(null)
     const [product,setProduct] = useState(null)
-    let time = 0
-
-    const storage = getStorage()
-
-    const timeout = () => setInterval(() => {
-        time ++
-    },1000)
 
     useEffect(() => {
-        timeout()
 
         const getProduct = getProductById(productId)
             
         const getImage = getImageByProId(productId)
 
-        if(time >= 10) {
-            alert("Lỗi mạng .")
-            setShowPreview(false)
-        }
-
         Promise.all([getProduct,getImage])
             .then(res => {
                 if(res[0]){
-                    clearInterval(timeout)
                     setProduct(res[0])
                     setCurrentImage(res[0].ImageUrl)
                 }else

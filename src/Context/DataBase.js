@@ -159,12 +159,50 @@ const DataBase = ({children}) => {
         })
     }
 
-    const deleteImageInStorage = (imageRef) => {
+    const postMultipleImage = (listFile,refLocation) => {
         return new Promise((resolve, reject) => {
-            deleteObject(imageRef)
-            .then(() => {
-                resolve()
-            }).catch(e => reject(e));
+            const promises = [];
+            listFile.forEach(file => {
+                const postImage = postImageToStorage(file, refLocation)
+            
+                promises.push(postImage)
+            })
+
+            Promise.all(promises).then(() => resolve()).catch((error) => reject(error));
+        })
+    }
+
+    const deleteMultipleImage = (listUrl) => {
+        return new Promise((resolve, reject) => {
+            const promises = []
+
+            listUrl.forEach((url) => {
+                const imageRef = ref(storage,url)
+                const deleteImage = deleteObject(imageRef)
+
+                promises.push(deleteImage)
+            })
+
+            Promise.all(promises).then(() => resolve()).catch((err) => reject(err))
+        })
+    }
+
+    const deleteImageInStorage = (id) => {
+        return new Promise((resolve, reject) => {
+            getImageByProId(id)
+                .then(images => {
+                    const promises = []
+                    images.forEach(image => {
+                        const imageRef = ref(storage,image)
+                        const deleteImage = deleteObject(imageRef)
+
+                        promises.push(deleteImage)
+                    })
+
+                    Promise.all(promises)
+                        .then(() => resolve())
+                        .catch(error => reject(error))
+                }).catch(error => reject(error))
         })
     }
 
@@ -185,7 +223,9 @@ const DataBase = ({children}) => {
                 deleteImageInStorage,
                 getImageByProId,
                 listImage,
-                setListImage
+                setListImage,
+                postMultipleImage,
+                deleteMultipleImage
             }}
         >
             {children}

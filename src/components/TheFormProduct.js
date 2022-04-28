@@ -19,7 +19,16 @@ const TheFormProduct = (props) => {
     const [requireImageMsg,setRequireImageMsg] = useState(null)
     const {setShowForm,id,setRefresh} = props
     const [imageIndex,setImageIndex] = useState(0)
-    const {getProductById,getCategories,postImageToStorage,insertEntity,listImage,getImageByProId} = useContext(DataBaseContext)
+    const {getProductById,
+        getCategories,
+        postImageToStorage,
+        insertEntity,
+        listImage,
+        getImageByProId,
+        postMultipleImage,
+        deleteMultipleImage,
+        update} 
+    = useContext(DataBaseContext)
     const [categories,setCategories] = useState([])
     const [isLoading,setIsLoading] = useState(true)
     const [productEdit,setProductEdit] = useState(null)
@@ -44,7 +53,7 @@ const TheFormProduct = (props) => {
             Price:Yup.number().required("Hãy nhập giá cho sản phẩm !")
         }),
 
-        onSubmit:values => {
+        onSubmit:async values => {
             if(imageFile == null)
                 return  setRequireImageMsg("Hãy chọn ảnh minh họa cho sản phẩm");
 
@@ -84,10 +93,65 @@ const TheFormProduct = (props) => {
                     })
             }
 
-            console.log(values)
+            let imageUrl = null
+            const promises = []
 
-            console.log(listImageForm)
-            console.log(imageFile)
+            //kiểm tra imageUrl có thay đổi không
+            if(productEdit["ImageUrl"] !== imageFile) {
+                await postImageToStorage(imageFile,'product images/')
+                .then(res => {
+                    imageUrl = res
+                })
+
+                const deleteOldImage = deleteMultipleImage([productEdit["ImageUrl"]])
+                promises.push(deleteOldImage)
+            }else{
+                imageUrl = productEdit["ImageUrl"]
+            }
+            
+            const productUpdate = {
+                "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "productName": values.ProductName,
+                "categoryId": values.CategoryId,
+                "amount": values.Amount,
+                "sold": values.Sold,
+                "description": values.Description,
+                "price": values.Price,
+                "imageUrl": imageUrl
+            }
+
+
+            //lấy danh sách iamges cũ trong listImageForm
+            const listOldImages = listImageForm.filter((image) => image.file == '').map((imageFile) => imageFile.url)
+            //lấy ds image file trong listImageForm
+            const listUpdateImage = listImageForm.filter((image) => image.file != '').map((imageFile) => imageFile.file)
+
+            //lấy ds ảnh cần xóa
+            const listImageNeedDelete = listImage.filter((image) => !listOldImages.includes(image))
+            //xóa ảnh
+            if(listImageNeedDelete.length > 0)
+            {
+                const deleteMulti = deleteMultipleImage(listImageNeedDelete)
+
+                promises.push(deleteMulti)
+            }
+
+            //post ảnh mới
+            if(listUpdateImage.length > 0){
+                const postMulti = postMultipleImage(listUpdateImage,`${id}/`)
+
+                promises.push(postMulti)
+            }
+
+            //update product
+            const updateProduct = update("Product",productUpdate,id)
+            promises.push(updateProduct)
+
+            Promise.all(promises).then(() => {
+                setIsLoading(false)
+                setRefresh(pre => !pre)
+                setShowForm(false)
+            }).catch(e => console.log(e))
         }
     })
 
@@ -142,7 +206,6 @@ const TheFormProduct = (props) => {
     
             getImageByProId(id)
                 .then((images) => {
-                    console.log(id)
                     images.forEach((image) => {
                         setListImageForm(pre => [...pre,{url: image,file:""}])
                     })
@@ -181,7 +244,8 @@ const TheFormProduct = (props) => {
                             formik={productFormik} 
                         />
 
-                        <BaseDropdown 
+                        <BaseDropdown
+                            value={id && productEdit ? productEdit["CategoryId"] : null}
                             width={240} 
                             titleColor="#000" 
                             name="CategoryId" 

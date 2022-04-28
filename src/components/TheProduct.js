@@ -20,7 +20,7 @@ const TheProduct = () => {
     const [idProductEdit,setIdProductEdit] = useState(null)
     const [listProductSelected,setListProductSelected] = useState([])
     const [keyword,setKeyword] = useState('')
-    const {deleteEntity,search} = useContext(DataBaseContext)
+    const {deleteEntity,search,deleteImageInStorage} = useContext(DataBaseContext)
     const [isLoading,setIsLoading] = useState(false)
 
     const storage = getStorage()
@@ -34,20 +34,18 @@ const TheProduct = () => {
         setIsLoading(true)
         const promises = []
 
-        listProductSelected.forEach((product) => {
+        listProductSelected.forEach(async(product) => {
             const deleteProduct = deleteEntity("Product",product["ProductId"])
 
             const imageRef = ref(storage,product["ImageUrl"])
 
-            const folderImageRef = ref(storage,`${product["ProductId"]}/`)
-
             const deleteImageRef = deleteObject(imageRef)
 
-            const deleteFolderImageRef = deleteObject(folderImageRef)
+            const deleteListImage = deleteImageInStorage(product["ProductId"])
 
             promises.push(deleteImageRef)
-            promises.push(deleteFolderImageRef)
             promises.push(deleteProduct)
+            promises.push(deleteListImage)
         })
 
         Promise.all(promises).then(() => {

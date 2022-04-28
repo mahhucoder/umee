@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import "../../css/Base/BaseInputField.css"
 import { FaExclamation } from "react-icons/fa";
+import accounting from 'accounting'
 
 const BaseInputField = props => {
 
@@ -10,16 +11,21 @@ const BaseInputField = props => {
     return (
         <div style={{"width":width+"px"}} className="inputFieldWrapper">
             <div style={{color: titleColor}} className="inputFieldTitle">{title} :</div>
-            <input
-                min={0}
-                name={name}
-                type={type} 
-                value={formik.values[name]}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                style={{"width":width+"px","height":height+"px"}}
-                className="inputField"
-            />
+            <div style={{display:"flex"}}>
+                {name == "Price" ? <div className="inputFieldPrice">
+                    {accounting.formatMoney(formik.values[name], "₫ ", 0)}
+                </div> : null}
+                <input
+                    min={0}
+                    name={name}
+                    type={type} 
+                    value={formik.values[name]}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    style={{"width":width+"px","height":height+"px",paddingLeft:name == "Price" ? "136px" : "10px"}}
+                    className="inputField"
+                />
+            </div>
 
             {formik.touched[name] && formik.errors[name] ? <>
                 <div className="invalidMsg">{formik.errors[name]}</div>

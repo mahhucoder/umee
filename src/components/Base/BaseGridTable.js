@@ -25,7 +25,7 @@ const BaseGridTable = (props) => {
                 showTrash(true)
                 if(setIdPreview){
                     if(newListItemSelected.length == 1)
-                        setIdPreview(newListItemSelected[0].ProductId)
+                        setIdPreview(newListItemSelected[0][`${entityApi}Id`])
                     else
                         setIdPreview(null)
                 }
@@ -46,13 +46,13 @@ const BaseGridTable = (props) => {
 
     return (
         <div className="baseGridTableWrapper">
-            <table style={{"display":entityApi == "Category" || entityApi == "Request" || entityApi == "Receipt"? "table" : "block"}} className="baseGridTable" border="0" cellSpacing="0">
+            <table style={{"display":entityApi == "Category" || entityApi == "Request" ? "table": entityApi == "Receipt" && data.length == 0 ? "table" : "block"}} className="baseGridTable" border="0" cellSpacing="0">
                 
                 <thead>
                     <tr>
-                        {entityApi == "Receipt" || entityApi == "Request"? null : <td></td>}
+                        { entityApi == "Request"? null : <td></td>}
                         {fields.map((field,index) => <td key={index} className="text-align-center">{field}</td>)}
-                        {entityApi == "Request"? null : <td></td>}
+                        {entityApi == "Receipt" || entityApi == "Request"? null : <td></td>}
                     </tr>
                 </thead>
 

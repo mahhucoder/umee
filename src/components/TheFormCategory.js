@@ -5,8 +5,9 @@ import ImageLoadFailed from "../source/images_webUMEE/image_load_failed.png"
 import {BsArrowsAngleContract} from "react-icons/bs"
 import {FaFolderPlus} from "react-icons/fa"
 import { DataBaseContext } from '../Context/DataBase';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL,deleteObject } from "firebase/storage";
+import { getStorage, ref } from "firebase/storage";
 import { HalfMalf } from 'react-spinner-animated';
+import BaseCheckbox from './Base/BaseCheckbox';
 
 const TheFormCategory = (props) => {
     const {setShowForm,id,setRefresh} = props
@@ -17,14 +18,13 @@ const TheFormCategory = (props) => {
     const [categoryEdit,setCategoryEdit] = useState(null)
     const [loadingPost,setLoadingPost] = useState(false)
     const [errorMsg,setErrorMsg] = useState(null)
+    const [forProduct,setForProduct] = useState(true)
 
     const storage = getStorage();
 
     const handleSelectImage = (e) => {
         const file = e.target.files[0]
         const promises = []
-
-        console.log(typeof(file))
 
         if(file)
             setImageFile(file)
@@ -46,7 +46,8 @@ const TheFormCategory = (props) => {
                 const newCategory = {
                     "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                     "categoryName": categoryName,
-                    "categoryImage": res
+                    "categoryImage": res,
+                    "forProduct":forProduct
                 }
 
                 insertEntity('Category',newCategory)
@@ -96,7 +97,8 @@ const TheFormCategory = (props) => {
             update("Category",{
                 "categoryId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                 "categoryName": categoryName,
-                "categoryImage": res
+                "categoryImage": res,
+                "forProduct": forProduct
             },id).then((res) => {
                 console.log(res)
                 setShowForm(false)
@@ -114,6 +116,7 @@ const TheFormCategory = (props) => {
                     setCategoryEdit(category)
                     setCategoryName(category.CategoryName)
                     setImageFile(category.CategoryImage)
+                    setForProduct(category.ForProduct)
                 })
         }
     },[id])
@@ -139,14 +142,15 @@ const TheFormCategory = (props) => {
                     className="theFormCategoryInput" 
                 />
 
+
                 <div style={{
-                        backgroundImage: `url("${imageFile && typeof(imageFile) == 'object' ? 
-                            URL.createObjectURL(imageFile) : 
-                            typeof(imageFile) == 'string' ? 
+                    backgroundImage: `url("${imageFile && typeof(imageFile) == 'object' ? 
+                    URL.createObjectURL(imageFile) : 
+                    typeof(imageFile) == 'string' ? 
                             imageFile : 
                             ImageLoadFailed}")`
                         }} 
-                    className="theFormCategoryImageArea"
+                        className="theFormCategoryImageArea"
                 >
                     <label className="theFormCategoryInputFileLabel">
                         <input 
@@ -157,6 +161,7 @@ const TheFormCategory = (props) => {
                     </label>
 
                 </div>
+                <BaseCheckbox isChecked={forProduct} setChecked={setForProduct} title="Thể loại đàn ?" />
 
                 {errorMsg ? <div className="theFormCategoryErrorMsg">{errorMsg}</div> : null}      
 

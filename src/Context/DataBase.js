@@ -11,6 +11,23 @@ const DataBase = ({children}) => {
 
     const storage = getStorage()
 
+    const browseReceipt = (id,status) => {
+        return new Promise((resolve, reject) => {
+            axios.put(`https://localhost:7236/api/v1/Receipts/${id}`,{
+                "receiptId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "accountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "createdAt": "2022-04-28T17:11:49.248Z",
+                "status": status,
+                "transportFee": 0,
+                "receiverName": "string",
+                "address": "string",
+                "phoneNumber": "string"
+            }).then(res => {
+                resolve(res)
+            }).catch(err => reject(err))
+        })
+    }
+
     const fetchData = (entity,id) => {
         axios.get(`https://localhost:7236/api/v1/${entity}${id ? '/'+id : ''}`)
             .then(response => setData(response.data))
@@ -120,7 +137,7 @@ const DataBase = ({children}) => {
 
     const search = (entity,keyword) => {
         return new Promise((resolve, reject) => {
-            axios.get(`https://localhost:7236/api/v1/${entity}s/search?keyword=${keyword}`)
+            axios.get(`https://localhost:7236/api/v1/${entity}s${keyword != "" ? `/search?keyword=${keyword}` : ""}`)
                 .then(res => {
                     setData(res.data)
                     resolve()
@@ -225,7 +242,8 @@ const DataBase = ({children}) => {
                 listImage,
                 setListImage,
                 postMultipleImage,
-                deleteMultipleImage
+                deleteMultipleImage,
+                browseReceipt
             }}
         >
             {children}

@@ -1,5 +1,6 @@
 import React from 'react';
 import "../../css/Base/BaseItemTable.css"
+import accounting from 'accounting'
 
 const BaseItemTable = (props) => {
 
@@ -15,9 +16,18 @@ const BaseItemTable = (props) => {
             return "Đã Hủy"
     }
 
+    const convertForProduct = (product) => {
+        if(product) return "True"
+        else    return "False"
+    }
+
+    // <td className="text-align-center">
+    //                 <div onClick={() => handleToggleEdit(row[fieldId])} className="editRowTable">Chi tiết</div>
+    //             </td>
+
     return (
         <tr>
-            {fieldId == "ReceiptId" || fieldId == "RequestId"? null : 
+            {fieldId == "RequestId"? null : 
                 <td className="text-align-center">
                     <div onClick={() => selectItem(row)} className="checkboxTable">
                         <div style={{"display":isSelected ? "block" : "none"}} className="checkboxTableInside"></div>
@@ -28,19 +38,20 @@ const BaseItemTable = (props) => {
                 <td key={index}  
                     style={{color:field == "Status" && row[field] == 0 ? "red" : field == "Status" && row[field] == 1 ? "green" : "#000",
                         textOverflow:field == "Content" ? "unset" : "ellipsis",whiteSpace:field == "Content" ? "normal" : "nowrap"}}
-                    className={field == "Content" ? "text-align-left" : "text-align-center"}
+                    className={field == "Content" || field == "CategoryName" || field == "ProductName"? "text-align-left" : "text-align-center"}
                 >
                     {field == "CategoryImage" || field == "ImageUrl" ? 
                         <a href={row[field]} target="_blank">{row[field]}</a> 
-                        : field== "Status" ? convertStatus(row[field]) : row[field]}
+                        : field== "Status" ? 
+                        convertStatus(row[field]) : 
+                        field== "ForProduct" ? 
+                        convertForProduct(row[field]) : 
+                        field== "Price" ? 
+                        accounting.formatMoney(row[field], "₫ ", 0) : row[field]}
                 </td>
             )}
 
-            {fieldId == "ReceiptId" ? 
-                <td className="text-align-center">
-                    <div onClick={() => handleToggleEdit(row[fieldId])} className="editRowTable">Chi tiết</div>
-                </td>
-            : fieldId == "RequestId" ? null :
+            {fieldId == "ReceiptId" || fieldId == "RequestId" ? null :
                 <td className="text-align-center">
                     <div onClick={() => handleToggleEdit(row[fieldId])} className="editRowTable">Sửa</div>
                 </td>

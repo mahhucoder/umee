@@ -1,7 +1,8 @@
 const Category = {
     "Mã Thể Loại":'',
     "Tên Thể Loại":'',
-    "Ảnh Minh Họa":''
+    "Ảnh Minh Họa":'',
+    "Thể loại đàn?":""
 }
 
 const Product = {

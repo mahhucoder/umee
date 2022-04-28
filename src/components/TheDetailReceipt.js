@@ -9,9 +9,9 @@ import {FaCompressArrowsAlt} from "react-icons/fa"
 
 const TheDetailReceipt = (props) => {
 
-    const {id,setShowDetail} = props;
+    const {id,setShowDetail,setRefresh} = props;
     const [receipt,setReceipt] = useState({ReceiptName:'',PhoneNumber:'',Address:'',TransportFee:0,details:[]})
-    const {getDetailReceiptById} = useContext(DataBaseContext)
+    const {getDetailReceiptById,browseReceipt} = useContext(DataBaseContext)
     const [isLoading,setIsLoading] = useState(true)
 
     useEffect(() => {
@@ -33,6 +33,26 @@ const TheDetailReceipt = (props) => {
         money += receipt.TransportFee
 
         return money
+    }
+
+    const handleCancelReceipt = () => {
+        setIsLoading(true)
+        browseReceipt(id,false)
+            .then(() => {
+                setIsLoading(false)
+                setShowDetail(false)
+                setRefresh(pre => !pre)
+            })
+    }
+
+    const handleAcceptReceipt = () => {
+        setIsLoading(true)
+        browseReceipt(id,true)
+        .then(() => {
+            setIsLoading(false)
+            setShowDetail(false)
+            setRefresh(pre => !pre)
+        })
     }
 
     return (
@@ -72,8 +92,8 @@ const TheDetailReceipt = (props) => {
                 </div>
 
                 <div className="theDetailReceiptFuc">
-                    <BaseButton width={160} border="1px solid #000" bgColor="#fff" text="Hủy Đơn" />
-                    <BaseButton width={160} color="#fff" text="Duyệt Đơn" />
+                    {receipt["Status"] == false ? <div style={{fontSize:"24px",fontWeight:"bold"}} className="money">Đã Hủy</div> : <BaseButton method={handleCancelReceipt} width={160} border="1px solid #000" bgColor="#fff" text="Hủy Đơn" />}
+                    {receipt["Status"] == null ? <BaseButton method={handleAcceptReceipt} width={160} color="#fff" text="Duyệt Đơn" /> :null }
                 </div>
             </div>
         </div>

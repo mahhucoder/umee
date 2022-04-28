@@ -4,6 +4,7 @@ import { DataBaseContext } from '../Context/DataBase';
 import "../css/ThePreviewProduct.css"
 import {BsArrowsAngleContract} from "react-icons/bs"
 import ImageLoadFailed from "../source/images_webUMEE/image_load_failed.png"
+import accounting from 'accounting'
 
 const ThePreviewProduct = (props) => {
 
@@ -80,7 +81,7 @@ const ThePreviewProduct = (props) => {
                             <div className="previewProductValue">{product ? product["Amount"] : null}</div>
                             <div className="previewProductValue">{product ? product["Sold"] : null}</div>
                             <div className="previewProductValue">{product ? product["CategoryName"] : null}</div>
-                            <div className="previewProductValue">{product ? product["Price"] : null}</div>
+                            <div className="previewProductValue money">{product ? accounting.formatMoney(product["Price"], "₫ ", 0)  : null}</div>
                         </div>
                     </div>
 

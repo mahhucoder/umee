@@ -19,8 +19,6 @@ const BaseProductInReceipt = (props) => {
             })
 
     },[ProductId])
-    
-    console.log(product)
 
     return (
         <div className="baseProductDetailInReceipt">

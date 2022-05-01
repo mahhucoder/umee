@@ -4,17 +4,17 @@ import "../../css/Base/BaseMenuItem.css"
 
 const BaseMenuItem = props => {
 
-    const {text} = props
+    const {category,method} = props
 
     return (
-        <div className="baseMenuItem">
-            {text}
+        <div onClick={method} className="baseMenuItem">
+            {category["CategoryName"]}
         </div>
     );
 };
 
 BaseMenuItem.propTypes = {
-    text: PropTypes.string.isRequired
+    category: PropTypes.object
 };
 
 export default BaseMenuItem;

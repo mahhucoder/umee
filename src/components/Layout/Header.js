@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useContext, useState} from 'react';
 import "../../css/Layout/Header.css"
 import BaseHeaderContextItem from '../Base/BaseHeaderContextItem';
 import BaseInputIcon from '../Base/BaseInputIcon';
@@ -8,15 +8,18 @@ import BaseUserContent from '../Base/BaseUserContext'
 import {UserContext} from "../../Context/UserContext"
 import { useNavigate } from 'react-router-dom';
 import avt from "../../source/images_webUMEE/avatar_male.png"
+import TheCartProduct from '../TheCartProduct';
 
 const Header = () => {
 
+    const [showCart,setShowCart] = useState(false);
     const {user} = useContext(UserContext)
     const navigate = useNavigate()
 
     return (
 
         <div className="headerContainer">
+            {showCart ? <TheCartProduct setShowCart={setShowCart} /> : null}
             {user != null && user.Admin == 1 
                 ? 
                     <>
@@ -36,12 +39,15 @@ const Header = () => {
                     </div>
 
                     <div className="headerContext">
-                        <div onClick={() => navigate("/category")} className="headerContextCategory">
+                        <div 
+                            // onClick={() => navigate("/category")} 
+                            className="headerContextCategory"
+                        >
                             <BaseHeaderContextItem text="Danh mục sản phẩm" />
                             <BaseMenuDrop />
                         </div>
 
-                        <div onClick={() => navigate("/")}>
+                        <div onClick={() => navigate("/category/accessory")}>
                             <BaseHeaderContextItem text="Phụ kiện" />
                         </div>
 
@@ -64,7 +70,7 @@ const Header = () => {
                         <BaseUserContent isSigned={user != null} className="userContext" />
                     </div>
 
-                    <div className="headerCart">
+                    <div onClick={() => setShowCart(true)} className="headerCart">
                         <FaCartPlus size={24} color="white" />
                     </div>
                 </>

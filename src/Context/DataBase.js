@@ -28,9 +28,25 @@ const DataBase = ({children}) => {
         })
     }
 
+    const pagingProduct = (pageNumber,pageSize,categoryId,min,max,priceSort,soldSort,onlyAccessory) => {
+        return new Promise((resolve, reject) => {
+            let url = `https://localhost:7236/api/v1/Products/paging?pageNumber=${pageNumber}&pageSize=${pageSize}${categoryId ? `&categoryId=${categoryId}` : ''}${min ? `&minPrice=${min}` : ''}${max ? `&maxPrice=${max}` : ''}${priceSort ? `&priceSort=${priceSort}` : ''}${soldSort ? `&soldSort=${soldSort}` : ''}${onlyAccessory ? `&onlyAccessory=${onlyAccessory}` : ''}`
+
+            axios.get(url)
+                .then(res => {
+                    resolve(res.data)
+                }).catch(err => reject(err))
+        })
+    }
+
     const fetchData = (entity,id) => {
-        axios.get(`https://localhost:7236/api/v1/${entity}${id ? '/'+id : ''}`)
-            .then(response => setData(response.data))
+        return new Promise((resolve, reject) => {
+            axios.get(`https://localhost:7236/api/v1/${entity}${id ? '/'+id : ''}`)
+                .then(response => {
+                    setData(response.data)
+                    resolve(response.data)
+                }).catch(error => reject(error))
+        })
     }
 
     const getImageByProId = (productId) => {
@@ -223,6 +239,15 @@ const DataBase = ({children}) => {
         })
     }
 
+    const getEntitiesViaForeignKey = (entity,id) => {
+        return new Promise((resolve, reject) => {
+            axios.get(`https://localhost:7236/api/v1/${entity}s/foreignkey/${id}`)
+                .then((response) => {
+                    resolve(response.data)
+                }).catch(error => reject(error))
+        })
+    }
+
     return (    
         <DataBaseContext.Provider
             value={{
@@ -243,7 +268,9 @@ const DataBase = ({children}) => {
                 setListImage,
                 postMultipleImage,
                 deleteMultipleImage,
-                browseReceipt
+                browseReceipt,
+                pagingProduct,
+                getEntitiesViaForeignKey
             }}
         >
             {children}

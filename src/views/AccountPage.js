@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { UserContext } from '../Context/UserContext';
 import BaseAccountField from '../components/Base/BaseAccountField';
 import "../css/views/AccountPage.css"
@@ -97,10 +96,6 @@ const AccountPage = props => {
             </div>
         </div>
     );
-};
-
-AccountPage.propTypes = {
-    
 };
 
 export default AccountPage;

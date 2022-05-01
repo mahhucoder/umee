@@ -1,16 +1,37 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import BaseSlider from '../components/Base/BaseSlider';
 import "../css/views/Home.css"
-import { UserContext } from '../Context/UserContext';
 import BaseCategoryItem from '../components/Base/BaseCategoryItem';
 import {fakeBestSale, fakeNews, fakeUrlCategory} from "../FakeData/index"
 import BaseProduct from '../components/Base/BaseProduct';
 import BaseNewsItem from '../components/Base/BaseNewsItem';
+import { DataBaseContext } from '../Context/DataBase';
 
 const HomePage = props => {
 
-    const {user} = useContext(UserContext)
-    const [currentCategoryIndex,setCurrentCategoryIndex] = useState(0)
+    const [listCategory,setListCategory] = useState([])
+    const [listBestSale,setListBestSale] = useState([])
+    const {fetchData,pagingProduct} = useContext(DataBaseContext)
+
+    useEffect(() => {
+
+        const get = async () => {
+            const results = await fetchData("Categorys")
+            pagingProduct(1,3,null,null,null,null,"DESC")
+                .then((res) => {
+                    const {data} = res
+
+                    setListBestSale(data)
+                })
+
+            const listGuitarCategory = results.filter(result => result.ForProduct == true)
+
+            setListCategory(listGuitarCategory)
+        }
+
+        get()
+
+    },[])
 
     return (
         <div className="homePageContainer">
@@ -20,11 +41,11 @@ const HomePage = props => {
                 <div className="homeCategoryTitle">Danh mục sản phẩm</div>
                 
                 <div className="homeCategory">
-                    {fakeUrlCategory.map((category,index) => 
+                    {listCategory.map((category,index) => 
                         <BaseCategoryItem 
                             key={index} 
-                            text={category.text} 
-                            imageUrl={category.imageUrl} 
+                            text={category["CategoryName"]} 
+                            imageUrl={category["CategoryImage"]} 
                             width={100/fakeUrlCategory.length + 5}
                             height={320}
                         />
@@ -36,8 +57,8 @@ const HomePage = props => {
                 <div className="productBestSaleTitle">Sản phẩm nổi bật</div>
 
                 <div className="productBestSale">
-                    {fakeBestSale.map((product,index) => 
-                        <BaseProduct key={index} imageUrl={product.imageUrl} name={product.name} price={product.price} />)}
+                    {listBestSale.map((product,index) => 
+                        <BaseProduct id={product["ProductId"]} key={index} imageUrl={product["ImageUrl"]} name={product["ProductName"]} price={product["Price"]} />)}
                 </div>
             </div>
 

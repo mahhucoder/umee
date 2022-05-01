@@ -1,23 +1,44 @@
 .baseProductWrapper{
-    /* background-color: red; */
     display: flex;
     flex-direction: column;
-    align-items: center
+    width: 360px;
+    border: 1px solid #000;
+    height:480px;
 }
 .baseProductImage{
     width: 360px;
     height: 320px;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    flex:1
 }
 .baseProductName{
     font-size: 16px;
     font-weight: bold;
-    margin: 4px 0px;
+    margin: 16px 0px;
+    padding-left: 16px;
 }
+
 .baseProductPrice{
-    margin-bottom:4px;
+    margin-bottom:8px;
+    font-weight: 500;
+    font-size:18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .baseProductDetail{
-    
+    margin-bottom: 8px;
+    display: flex;
+    width: 100%;
+    justify-content:space-between;
+    padding:0px 16px;
+}
+
+.baseProductSoldMoney {
+    display: flex;
+    width: 100%;
+    padding:0px 16px;
+    justify-content:space-between;
 }

@@ -34,6 +34,8 @@ const MainContent = () => {
                 <Route path="/account" element={<AccountPage />} />
                 <Route path="/news" element={<NewsPage />} />
                 <Route path="/request" element={<RequestPage />} />
+                <Route path="category/:CategoryId" element={<CategoryPage />} />
+                {/* <Route path="/category/accessory" element={<CategoryPage />} /> */}
                 <Route path="/category" element={<CategoryPage />} />
                 <Route path="/admin/*" element={<Admin />} />
                 <Route path="*" element={<NotFound />} />

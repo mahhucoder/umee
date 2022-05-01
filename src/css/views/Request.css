@@ -1,0 +1,67 @@
+.requestPageContainer{
+    width: 100%;
+    padding:0px 40px;
+}
+.requestPageHeader{
+    height:72px;
+    line-height: 72px;
+    border-bottom: 2px solid #000;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.requestPageTitle{
+    font-size:36px;
+    font-weight: bold;
+    border-bottom: 4px solid #A62B4D;
+    width:120px;
+    text-align: center;
+    margin:20px auto;
+    padding-bottom: 10px;
+    margin-bottom:80px
+}
+
+.requestPageInfo{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
+.requestContent {
+    margin-top: 20px;
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 80px;
+}
+
+.requestGreeting{
+    margin-bottom: 16px;
+}
+
+.requestInfoItem{
+    display: flex;
+    margin-bottom:8px;
+    align-items: center;
+}
+
+.requestInfoItemIcon{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.requestInfoItemText{
+    font-size:16px;
+    font-weight:bold;
+    margin-left: 8px;
+}
+
+.requestForm {
+    width: 45%;
+
+}

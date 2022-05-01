@@ -1,48 +1,28 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { UserContext } from '../Context/UserContext';
 import BaseItemReceiptTable from './Base/BaseItemReceiptTable';
 import "../css/TheReceiptTable.css"
+import { DataBaseContext } from '../Context/DataBase';
 
 const TheReceiptTable = props => {
 
     const {user} = useContext(UserContext)
+    const {getEntitiesViaForeignKey} = useContext(DataBaseContext)
+    const [listReceipt,setListReceipt] = useState([])
 
-    const data = [{
-        ReceiptId:"asdfasfasfasdfasfasasd",
-        ReceiverName:"Lê Mạnh Hùng",
-        PhoneNumber:"0866940201",
-        Address:"Thanh Mai - Thanh Oai - Hà Nội",
-        CreatedAt:"2001-02-11T00:00:00",
-        TransportFee:30000,
-        Status:1,
-    },{
-        ReceiptId:"asdfasfasfasdfasfasasd",
-        ReceiverName:"Lê Mạnh Hùng",
-        PhoneNumber:"0866940201",
-        Address:"Thanh Mai - Thanh Oai - Hà Nội",
-        CreatedAt:"2001-02-11T00:00:00",
-        TransportFee:30000,
-        Status:null,
-    },{
-        ReceiptId:"asdfasfasfasdfasfasasd",
-        ReceiverName:"Lê Mạnh Hùng",
-        PhoneNumber:"0866940201",
-        Address:"Thanh Mai - Thanh Oai - Hà Nội",
-        CreatedAt:"2001-02-11T00:00:00",
-        TransportFee:30000,
-        Status:null,
-    },{
-        ReceiptId:"asdfasfasfasdfasfasasd",
-        ReceiverName:"Lê Mạnh Hùng",
-        PhoneNumber:"0866940201",
-        Address:"Thanh Mai - Thanh Oai - Hà Nội",
-        CreatedAt:"2001-02-11T00:00:00",
-        TransportFee:30000,
-        Status:0,
-    }
+    useEffect(() => {
 
-    ]
+        if(user){
+            getEntitiesViaForeignKey("Receipt",user["AccountId"])
+                .then(res => {
+                    console.log(res)
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+
+    },[user])
 
     return (
         <table className="theReceiptTable" border="0" cellSpacing="0">
@@ -61,8 +41,9 @@ const TheReceiptTable = props => {
             </thead>
 
             <tbody>
+                {listReceipt.length == 0 ? <div className="receiptTableEmpty">Bạn chưa có đơn hàng nào</div> : null}
                 {
-                    data.map((receipt,index) => <BaseItemReceiptTable key={index} receipt={receipt} sumMoney={300000} />)
+                    listReceipt.map((receipt,index) => <BaseItemReceiptTable key={index} receipt={receipt} sumMoney={300000} />)
                 }
             </tbody>
 

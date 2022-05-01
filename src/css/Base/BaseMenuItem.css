@@ -1,14 +1,13 @@
 .baseMenuItem {
-    height: 32px;
     line-height: 32px;
     border-top: 1px solid #ccc;
     cursor: pointer;
     font-weight: 400;
-    font-size:16px
+    font-size:16px;
+    padding:4px 0px;
 }
 
 .baseMenuItem:hover {
     background-color: rgb(219, 219, 219);
-    font-size: 18px;
     font-weight: 500;
 }

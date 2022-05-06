@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { UserContext } from '../Context/UserContext';
 import BaseItemReceiptTable from './Base/BaseItemReceiptTable';
 import "../css/TheReceiptTable.css"
@@ -16,7 +15,7 @@ const TheReceiptTable = props => {
         if(user){
             getEntitiesViaForeignKey("Receipt",user["AccountId"])
                 .then(res => {
-                    console.log(res)
+                    setListReceipt(res)
                 }).catch(err => {
                     console.log(err)
                 })
@@ -36,23 +35,17 @@ const TheReceiptTable = props => {
                     <td className="text-align-center">Ngày tạo</td>
                     <td className="text-align-center">Phí vận chuyển</td>
                     <td className="text-align-center">Trạng thái</td>
-                    <td className="text-align-center">Tổng tiền</td>
                 </tr>
             </thead>
 
             <tbody>
                 {listReceipt.length == 0 ? <div className="receiptTableEmpty">Bạn chưa có đơn hàng nào</div> : null}
                 {
-                    listReceipt.map((receipt,index) => <BaseItemReceiptTable key={index} receipt={receipt} sumMoney={300000} />)
+                    listReceipt.map((receipt,index) => <BaseItemReceiptTable key={index} receipt={receipt}/>)
                 }
             </tbody>
 
         </table>
     );
 };
-
-TheReceiptTable.propTypes = {
-    
-};
-
 export default TheReceiptTable;

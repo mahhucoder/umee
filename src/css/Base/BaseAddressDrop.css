@@ -1,0 +1,71 @@
+.baseAddressDrop{
+    margin-bottom: 8px;
+}
+
+.baseAddressDropTitle{
+    margin-bottom: 4px;
+}
+
+.baseAddressDropDisplay{
+    border: 1px solid #000;
+    height:32px;
+    position: relative;
+    width: 280px;
+    box-sizing: border-box;
+    line-height:32px;
+    text-indent: 8px;
+}
+
+.baseAddressDropIcon {
+    width:20px;
+    height:20px;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:50%;
+    cursor: pointer;
+}
+
+.baseAddressDropIcon:hover {
+    background-color: rgb(234, 234, 234)
+}
+
+.baseAddressDropList{
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    top: calc(100% + 4px);
+    z-index: 99;
+    height: 160px;
+    overflow:auto;
+    border: 1px solid #000
+}
+
+.baseAddressDropList::-webkit-scrollbar{
+    width: 5px;
+}
+
+.baseAddressDropList::-webkit-scrollbar-thumb {
+    background: #A62B4D; 
+    border-radius: 10px;
+  }
+  
+.baseAddressDropList::-webkit-scrollbar-thumb:hover {
+    background: #A62B4D; 
+}
+
+.baseAddressDropItem {
+    cursor: pointer;
+}
+
+.baseAddressDropItem:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.baseAddressDropSelected {
+    background-color:#A62B4D;
+    color: #fff;
+}

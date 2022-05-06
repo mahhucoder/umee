@@ -51,7 +51,7 @@ const TheReceipt = () => {
 
     return (
         <div className="theReceipt">
-            {isShowDetail ? <TheDetailReceipt setRefresh={setRefresh} setShowDetail={setIsShowDetail} id={receiptId} /> : null}
+            {isShowDetail ? <TheDetailReceipt setListReceiptSelected={setListReceiptSelected}  setRefresh={setRefresh} setShowDetail={setIsShowDetail} id={receiptId} /> : null}
 
             {isLoading ? 
                 <div className="loading">
@@ -67,7 +67,7 @@ const TheReceipt = () => {
 
                 <div className="theReceiptIconButtonWrapper">
 
-                <div onClick={() => setIsShowDetail(true)} style={{"display":receiptId ? "flex" : "none"}} className="theCategoryIconButton">
+                <div onClick={() => setIsShowDetail(true)} style={{"display":receiptId && listReceiptSelected.length != 0 ? "flex" : "none"}} className="theCategoryIconButton">
                         <FaInfo size={20} />
                     </div>
 

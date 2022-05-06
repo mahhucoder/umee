@@ -23,6 +23,7 @@ const CategoryPage = () => {
     const navigate = useNavigate()
 
     const handleSelectFilter = ({type,value}) => {
+        setPageNumber(1)
         if(type === 'Category'){
             if(value == categoryId)
             {

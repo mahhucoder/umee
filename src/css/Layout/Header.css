@@ -63,6 +63,7 @@
 .headerSearchInput{
     margin-left: 20px;
     margin-right:20px;
+    position: relative;
 }
 .headerUser{
     margin-right: 16px;
@@ -81,6 +82,7 @@
 .headerCart{
     margin-right: 40px;
     cursor: pointer;
+    position: relative;
 }
 
 .headerCart:hover {
@@ -97,4 +99,44 @@
 
 .headerUser:hover .baseMenuDrop{
     display: block;
+}
+
+.headerCartBar {
+    background-color: red;
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top: -8px;
+    right: -10px;
+}
+
+.headerSearchList{
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+    top: calc(100% + 6px);
+    padding-top:10px;
+    padding-left: 10px;
+    border-radius: 4px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.headerSearchList::-webkit-scrollbar{
+    width: 5px;
+}
+
+.headerSearchList::-webkit-scrollbar-thumb {
+    background: #A62B4D; 
+    border-radius: 10px;
+  }
+  
+.headerSearchList::-webkit-scrollbar-thumb:hover {
+    background: #A62B4D; 
 }

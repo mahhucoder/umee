@@ -1,0 +1,73 @@
+.productInFormReceipt{
+    display: flex;
+    margin-bottom: 12px;
+    border:1px solid #000;
+    border-radius:4px;
+    position: relative;
+}
+
+.productInFormReceiptImage{
+    min-width:120px;
+    height:160px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+    border:1px solid #000;
+    margin: 8px;
+    border-radius:4px;
+    cursor: pointer;
+}
+
+.productInFormReceiptInfo{
+    flex: 1;
+    padding-right: 20px;
+    margin-left: 24px;
+}
+
+.productInFormReceiptInfoTop{
+    cursor: pointer;
+    display: flex;
+    justify-content:space-between;
+    width:100%;
+}
+
+.productInFormReceiptProductName{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.productInFormReceiptAmount{
+    margin-left:12px;
+    white-space: nowrap;
+}
+
+.productInFormReceiptInfoBottom{
+    display: flex;
+    justify-content:space-between;
+}
+
+.productInFormReceiptPrice{
+
+}
+
+.productInFormReceiptAmountBuy{
+
+}
+
+.productInFormReceiptAmountInput{
+    outline: none;
+}
+
+.productInFormReceiptRemove {
+    position: absolute;
+    background-color: #A62B4D;
+    width:40px;
+    height:40px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:4px;
+    bottom:0;
+    right:0;
+    cursor: pointer;
+}

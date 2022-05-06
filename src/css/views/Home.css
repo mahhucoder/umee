@@ -80,7 +80,7 @@
 .newsImage{
     background-image: url(../../source/images_webUMEE/1599840524_Tong-hop-50-hinh-nen-dan-Guitar-dep-cho-may.jpg);
     height: 100%;
-    width: 600px;
+    min-width: 360px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -90,6 +90,6 @@
 .newsList{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    flex:1;
     justify-content:space-between;
 }

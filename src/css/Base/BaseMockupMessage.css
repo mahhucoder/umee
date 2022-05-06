@@ -1,0 +1,35 @@
+@keyframes slideMockup {
+    from {
+        opacity: 0;
+        transform: translateX(300px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+.baseMockupMessage {
+    position: fixed;
+    width: 280px;
+    background-color: #fff;
+    top: 100px;
+    right: 10px;
+    animation-name: slideMockup;
+    animation-duration:0.5s;
+    display: flex;
+    padding:8px;
+    border-radius:4px;
+    z-index: 100;
+}
+
+.baseMockupIcon{
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.baseMockupText{
+    
+}

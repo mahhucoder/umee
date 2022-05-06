@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import BaseSlider from '../components/Base/BaseSlider';
 import "../css/views/Home.css"
 import BaseCategoryItem from '../components/Base/BaseCategoryItem';
-import {fakeBestSale, fakeNews, fakeUrlCategory} from "../FakeData/index"
 import BaseProduct from '../components/Base/BaseProduct';
 import BaseNewsItem from '../components/Base/BaseNewsItem';
 import { DataBaseContext } from '../Context/DataBase';
@@ -11,7 +10,7 @@ const HomePage = props => {
 
     const [listCategory,setListCategory] = useState([])
     const [listBestSale,setListBestSale] = useState([])
-    const {fetchData,pagingProduct} = useContext(DataBaseContext)
+    const {fetchData,pagingProduct,news} = useContext(DataBaseContext)
 
     useEffect(() => {
 
@@ -46,7 +45,7 @@ const HomePage = props => {
                             key={index} 
                             text={category["CategoryName"]} 
                             imageUrl={category["CategoryImage"]} 
-                            width={100/fakeUrlCategory.length + 5}
+                            width={100/listCategory.length + 5}
                             height={320}
                         />
                     )}
@@ -68,7 +67,7 @@ const HomePage = props => {
                 <div className="news">
                     <div className="newsImage"></div>
                     <div className="newsList">
-                        {fakeNews.map((news,index) => <BaseNewsItem key={index} news={news} />)}
+                        {news.map((news,index) => <BaseNewsItem index={index} key={index} news={news} />)}
                     </div>
                 </div>
             </div>

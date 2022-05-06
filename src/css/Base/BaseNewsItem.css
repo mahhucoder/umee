@@ -4,10 +4,13 @@
     align-items: center;
     cursor: pointer;
     background-color: #fff;
+    box-sizing: border-box;
+    height: 136px;
+    /* flex: 1; */
 }
 
 .baseNewsItemText{
-
+    flex: 1
 }
 
 .baseNewsItemTitLe{
@@ -17,7 +20,10 @@
 }
 
 .baseNewsItemDescription{
-
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height:80px;
+    width:100%;
 }
 .baseNewsItemImage{
     background-position: center;
@@ -25,4 +31,5 @@
     background-size:cover;
     min-width:200px;
     height: 120px;
+    margin-left: 12px;
 }

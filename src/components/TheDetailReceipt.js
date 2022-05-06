@@ -9,9 +9,9 @@ import {FaCompressArrowsAlt} from "react-icons/fa"
 
 const TheDetailReceipt = (props) => {
 
-    const {id,setShowDetail,setRefresh} = props;
+    const {id,setShowDetail,setRefresh,setListReceiptSelected} = props;
     const [receipt,setReceipt] = useState({ReceiptName:'',PhoneNumber:'',Address:'',TransportFee:0,details:[]})
-    const {getDetailReceiptById,browseReceipt} = useContext(DataBaseContext)
+    const {getDetailReceiptById,browseReceipt,updateAmount} = useContext(DataBaseContext)
     const [isLoading,setIsLoading] = useState(true)
 
     useEffect(() => {
@@ -37,18 +37,33 @@ const TheDetailReceipt = (props) => {
 
     const handleCancelReceipt = () => {
         setIsLoading(true)
-        browseReceipt(id,false)
+        const promises = []
+
+        receipt.details.forEach(detail => {
+            const amountUpdate = detail["Amount"]
+            const idUpdate = detail["ProductId"]
+
+            const update = updateAmount(idUpdate, amountUpdate)
+            promises.push(update)
+        })
+
+
+        const browse = browseReceipt(id,false)
+            
+        Promise.all(promises)
             .then(() => {
+                setListReceiptSelected([])
                 setIsLoading(false)
                 setShowDetail(false)
                 setRefresh(pre => !pre)
-            })
+            }).catch(err => console.log(err))
     }
 
     const handleAcceptReceipt = () => {
         setIsLoading(true)
         browseReceipt(id,true)
         .then(() => {
+            setListReceiptSelected([])
             setIsLoading(false)
             setShowDetail(false)
             setRefresh(pre => !pre)

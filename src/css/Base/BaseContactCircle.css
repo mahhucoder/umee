@@ -11,6 +11,7 @@
     display: flex;
     align-items:center;
     justify-content: center;
+    position: relative;
 }
 
 .baseContactCircleBorder {
@@ -45,6 +46,43 @@
     }
 }
 
-.baseContactCircle:hover {
-    animation:hoverContact 1s linear infinite
+@keyframes show {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+.baseContactCircle .info {
+    position:absolute;
+    background-color: #A62B4D;
+    padding:8px;
+    right:calc(100% + 10px);
+    border-radius:4px;
+    display:none;
+    animation:show 0.2s linear;
+    transform-origin: 100% 50%;
+}
+
+.baseContactCircle .info::after{
+    content: "";
+    top: 30%;
+    right:calc(0px - 20px);
+    position: absolute;
+    border:10px solid;
+    border-color: transparent transparent transparent #A62B4D;
+}
+
+.baseContactCircle:hover .info {
+    display:block;
+}
+
+.infoBorder {
+    border: 1px solid #fff;
+    border-radius:4px;
+    font-size:24px;
+    padding:4px
 }

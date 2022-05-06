@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import accounting from 'accounting'
 
 const BaseItemTable = props => {
 
-    const {receipt,sumMoney} = props
+    const {receipt} = props
 
     return (
         <tr>
@@ -12,19 +12,14 @@ const BaseItemTable = props => {
             <td className="text-align-center">{receipt.PhoneNumber}</td>
             <td className="text-align-center">{receipt.Address}</td>
             <td className="text-align-center">{receipt.CreatedAt.slice(0,10)}</td>
-            <td className="text-align-center">{receipt.TransportFee}</td>
+            <td className="text-align-center money">{accounting.formatMoney(receipt.TransportFee, { symbol: "VNĐ",  format: "%v %s" })}</td>
             <td 
                 style={{"color" : receipt.Status == 1 ? "green" : receipt.Status == 0 ? "red" : 'rgb(206, 115, 24)'}} 
                 className="text-align-center">
                     {receipt.Status == 1 ? "Success" : receipt.Status == 0 ? "Cancel" : "Wait..."}
             </td>
-            <td className="text-align-center">{sumMoney}</td>
         </tr>
     )
-};
-
-BaseItemTable.propTypes = {
-    
-};
+}
 
 export default BaseItemTable;

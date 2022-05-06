@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "../css/TheCartProduct.css"
 import {FaCompress} from 'react-icons/fa'
 import BaseProductInCart from './Base/BaseProductInCart';
+import accounting from 'accounting'
+import BaseButton from "../components/Base/BaseButton"
+import { DataBaseContext } from '../Context/DataBase';
+import { useNavigate } from 'react-router-dom';
 
 const TheCartProduct = (props) => {
     
     const {setShowCart} = props
-    const [listIdProduct,setListIdProduct] = useState([])
+    const [sumMoney,setSumMoney] = useState(0)
+    const {listIdInCart} = useContext(DataBaseContext)
+    const navigate = useNavigate()
 
-    useEffect(() => {
-
-        const listId = JSON.parse(sessionStorage.getItem("product_id"))
-
-        if(listId) {
-            setListIdProduct(listId)
+    const handleBuy = () => {
+        if(listIdInCart.length != 0) {
+            setShowCart(false)
+            navigate("/payment")
         }
-
-    },[])
+    }
 
     return (
         <div className="cartProductBg">
@@ -27,9 +30,17 @@ const TheCartProduct = (props) => {
 
                 <div className="cartProductTitle">Giỏ hàng của bạn</div>
 
-                {
-                    listIdProduct.map((id,index) => <BaseProductInCart key={index} id={id} />)
-                }
+                <div className="cartProductList">
+                    {
+                        listIdInCart.map((id,index) => <BaseProductInCart setShowCart={setShowCart} setSumMoney={setSumMoney} key={index} id={id} />)
+                    }
+
+                    {listIdInCart.length == 0 ? <div>Giỏ hàng trống</div> : null}
+                </div>
+
+                <div className="cartProductSumMoney">Tổng tiền : <p className="money">{accounting.formatMoney(sumMoney, { symbol: "VNĐ",  format: "%v %s" })}</p></div>
+            
+                <BaseButton method={handleBuy} color="#fff" text='Thanh toán' />
             </div>
         </div>
     );

@@ -11,6 +11,12 @@ const BaseContactCircle = (props) => {
             <div className="baseContactCircleBorder">
                 {type == "call" ? <FaPhoneAlt size={28} /> : type == "message" ? <FaCommentAlt size={28} /> : null}
             </div>
+
+            <div className="info">
+                <div className="infoBorder">
+                    {type == "message" ? "umee@gmail.com" : "0988.6868.8888"}
+                </div>
+            </div>
         </div>
     );
 };

@@ -1,0 +1,146 @@
+.productPageContainer{
+    width: 100%;
+    padding:0px 40px;
+    /* background:red; */
+}
+
+.productPageHeader{
+    height:72px;
+    line-height: 72px;
+    border-bottom: 2px solid #000;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.productPageInfo{
+    display: flex;
+    /* height: 100%; */
+}
+
+.productPageImageArea{
+    min-width:540px;
+    height:560px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid #000;
+    border-radius:4px
+}
+
+.productPageListImage{
+    min-width:200px;
+    height:560px;
+    margin:0px 20px;
+    overflow-y: scroll;
+}
+
+.productPageListImage::-webkit-scrollbar{
+    width: 5px;
+    /* margin-left: 10px; */
+}
+
+.productPageListImage::-webkit-scrollbar-thumb {
+    background: #A62B4D; 
+    border-radius: 10px;
+  }
+  
+.productPageListImage::-webkit-scrollbar-thumb:hover {
+    background: #A62B4D; 
+}
+
+.productPageImageItem {
+    min-width: 100%;
+    height: 240px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:contain;
+    border: 1px solid #000;
+    margin-bottom:4px;
+    cursor: pointer;
+}
+
+.productPageInfoDetail{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+}
+
+.productPageInfoBasic {
+    display: flex;
+    height: 40%;
+    justify-content: center;
+}
+
+.productPageKeys{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+}
+
+.productPageKey{
+    height:40px;
+    border-bottom: 2px solid #000;
+    line-height:40px;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+.productPageValues{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    flex:1;
+}
+
+.productPageValue{
+    white-space: nowrap;
+    height:40px;
+    border-bottom: 2px solid #000;
+    line-height:40px;
+    text-indent: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.productPageButton {
+    display:flex;
+    justify-content:space-between;
+    width:70%;
+    margin-top: 40px;
+}
+
+.productPageDescription{
+    margin-top: 16px;
+}
+
+.productDescriptionTitle{
+    font-size:24px;
+    font-weight: bold;
+    margin-bottom:20px
+}
+
+.productDescriptionText{
+
+}
+
+.productDescriptionCategorySameTitle{
+    font-size:24px;
+    font-weight: bold;
+    margin-bottom:12px
+}
+.productPageCategorySame{
+    display: flex;
+    justify-content:space-between;
+}
+.productDescriptionPriceSameTitle{
+    font-size:24px;
+    font-weight: bold;
+    margin-bottom:12px
+}
+.productPagePriceSame{
+    display: flex;
+    margin-bottom:80px;
+    justify-content:space-between;
+
+}

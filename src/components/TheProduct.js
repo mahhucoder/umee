@@ -20,7 +20,7 @@ const TheProduct = () => {
     const [idProductEdit,setIdProductEdit] = useState(null)
     const [listProductSelected,setListProductSelected] = useState([])
     const [keyword,setKeyword] = useState('')
-    const {deleteEntity,search,deleteImageInStorage} = useContext(DataBaseContext)
+    const {deleteEntity,search,deleteImageInStorage,setMessage,setShowMessage} = useContext(DataBaseContext)
     const [isLoading,setIsLoading] = useState(false)
 
     const storage = getStorage()
@@ -49,6 +49,13 @@ const TheProduct = () => {
         })
 
         Promise.all(promises).then(() => {
+            setMessage(`Bạn đã xóa thành công ${listProductSelected.length} sản phẩm !`)
+            setShowMessage(true)
+
+            setTimeout(() => {
+                setShowMessage(false)
+            },3000)
+
             setIsLoading(false)
             setRefresh(!refresh)
             setListProductSelected([])

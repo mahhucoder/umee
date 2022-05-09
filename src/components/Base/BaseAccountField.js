@@ -4,7 +4,6 @@ import BaseRadioItem from './BaseRadioItem';
 import "../../css/Base/BaseAccountField.css"
 
 const BaseAccountField = props => {
-
     const {title,value,method,disabled,type} = props
     const listItem = [{display:"Nam",value:0},{display:"Nữ",value:1}]
 

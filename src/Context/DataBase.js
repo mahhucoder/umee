@@ -482,7 +482,8 @@ const DataBase = ({children}) => {
                 updateAmount,
                 news,
                 newsIndex,
-                setNewsIndex
+                setNewsIndex,
+                getReceiptDetails
             }}
         >
             {children}

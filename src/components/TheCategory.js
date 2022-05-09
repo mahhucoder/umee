@@ -16,7 +16,7 @@ const TheCategory = () => {
     const [refresh,setRefresh] = useState(false)
     const [idCategoryEdit,setIdCategoryEdit] = useState(null)
     const [listCategorySelected,setListCategorySelected] = useState([])
-    const {search,deleteEntity} = useContext(DataBaseContext)
+    const {search,deleteEntity,setMessage,setShowMessage} = useContext(DataBaseContext)
     const [isLoading,setIsLoading] = useState(false)
     const [keyword,setKeyword] = useState('')
 
@@ -43,6 +43,13 @@ const TheCategory = () => {
         })
 
         Promise.all(promises).then(() => {
+            setMessage(`Bạn đã xóa thành công ${listCategorySelected.length} thể loại !`)
+            setShowMessage(true)
+
+            setTimeout(() => {
+                setShowMessage(false)
+            },3000)
+
             setIsLoading(false)
             setRefresh(!refresh)
             setListCategorySelected([])

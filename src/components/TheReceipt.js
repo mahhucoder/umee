@@ -16,20 +16,49 @@ const TheReceipt = () => {
     const [refresh,setRefresh] = useState(false)
     const [listReceiptSelected,setListReceiptSelected] = useState([])
     const [isShowTrash,setIsShowTrash] = useState(false)
-    const {deleteEntity} = useContext(DataBaseContext)
+    const {deleteEntity,setMessage,setShowMessage,getReceiptDetails,updateAmount} = useContext(DataBaseContext)
     const [isLoading,setIsLoading] = useState(false)
 
     const handleToggleEdit = (id) => {
         setReceiptId(id)
     }
 
+    const rollbackAmount = (id) => {
+        return new Promise((resolve, reject) => {
+            getReceiptDetails(id)
+                .then(res => {
+                    const promises = []
+    
+                    res.forEach(detail => {
+                        const update = updateAmount(detail["ProductId"],detail["Amount"])
+    
+                        promises.push(update)
+                    })
+    
+                    Promise.all(promises)
+                        .then((res) => {
+                            resolve(res)
+                        }).catch((error) => reject(error))
+                })
+        })
+    }
+
     const handleDeleteReceipt = () => {
         const promisesDetail = []
         const promisesReceipt = []
+        const promisesRollback = []
+
         setIsLoading(true)
 
         if(listReceiptSelected.length > 0){
             listReceiptSelected.forEach(receipt => {
+
+                if(receipt["Status"]){
+                    const rollback = rollbackAmount(receipt["ReceiptId"])
+
+                    promisesRollback.push(rollback)
+                }
+
                 const deleteDetail = deleteEntity("ReceiptDetail",receipt["ReceiptId"])
                 const deleteReceipt = deleteEntity("Receipt",receipt["ReceiptId"])
 
@@ -39,8 +68,15 @@ const TheReceipt = () => {
 
             Promise.all(promisesDetail)
                 .then(() => {
-                    Promise.all(promisesReceipt)
+                    Promise.all([...promisesReceipt,...promisesRollback])
                         .then(() => {
+                            setMessage(`Bạn đã xóa thành công ${listReceiptSelected} đơn hàng !`)
+                            setShowMessage(true)
+                
+                            setTimeout(() => {
+                                setShowMessage(false)
+                            },3000)
+
                             setIsLoading(false)
                             setRefresh(pre => !pre)
                         })

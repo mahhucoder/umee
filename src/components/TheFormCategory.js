@@ -14,7 +14,7 @@ const TheFormCategory = (props) => {
 
     const [imageFile,setImageFile] = useState(null)
     const [categoryName,setCategoryName] = useState('')
-    const {getCategoryById,insertEntity,update,postImageToStorage,deleteImageInStorage} = useContext(DataBaseContext)
+    const {getCategoryById,insertEntity,update,postImageToStorage,deleteImageInStorage,setMessage,setShowMessage} = useContext(DataBaseContext)
     const [categoryEdit,setCategoryEdit] = useState(null)
     const [loadingPost,setLoadingPost] = useState(false)
     const [errorMsg,setErrorMsg] = useState(null)
@@ -54,6 +54,13 @@ const TheFormCategory = (props) => {
                     .then(res => {
                         console.log(res)
         
+                        setMessage("Thêm mới thành công một thể loại !")
+                        setShowMessage(true)
+
+                        setTimeout(() => {
+                            setShowMessage(false)
+                        },3000)
+
                         setLoadingPost(false)
                         setShowForm(false)
                         setRefresh(pre => !pre)
@@ -101,6 +108,13 @@ const TheFormCategory = (props) => {
                 "forProduct": forProduct
             },id).then((res) => {
                 console.log(res)
+                setMessage("Cập nhật thành công !")
+                setShowMessage(true)
+
+                setTimeout(() => {
+                    setShowMessage(false)
+                },3000)
+
                 setShowForm(false)
                 setRefresh(pre => !pre)
                 setLoadingPost(false)

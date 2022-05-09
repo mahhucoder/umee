@@ -27,8 +27,10 @@ const TheFormProduct = (props) => {
         getImageByProId,
         postMultipleImage,
         deleteMultipleImage,
-        update} 
-    = useContext(DataBaseContext)
+        update,
+        setMessage,
+        setShowMessage
+    } = useContext(DataBaseContext)
     const [categories,setCategories] = useState([])
     const [isLoading,setIsLoading] = useState(true)
     const [productEdit,setProductEdit] = useState(null)
@@ -85,6 +87,13 @@ const TheFormProduct = (props) => {
     
                         Promise.all(promises)
                             .then((res) =>{
+                                setMessage(`Bạn đã thêm mới thành công sản phẩm !`)
+                                setShowMessage(true)
+                    
+                                setTimeout(() => {
+                                    setShowMessage(false)
+                                },3000)
+
                                 setIsLoading(false)
                                 setRefresh(pre => !pre)
                                 setShowForm(false)
@@ -148,6 +157,13 @@ const TheFormProduct = (props) => {
             promises.push(updateProduct)
 
             Promise.all(promises).then(() => {
+                setMessage(`Bạn đã cập nhật thành công sản phẩm !`)
+                setShowMessage(true)
+    
+                setTimeout(() => {
+                    setShowMessage(false)
+                },3000)
+
                 setIsLoading(false)
                 setRefresh(pre => !pre)
                 setShowForm(false)

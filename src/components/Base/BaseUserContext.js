@@ -44,4 +44,4 @@ TheUserContext.propTypes = {
     isSigned: PropTypes.bool.isRequired
 };
 
-export default TheUserContext;
+export default React.memo(TheUserContext);

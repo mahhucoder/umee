@@ -20,4 +20,4 @@ const BaseFooterContext = (props) => {
     );
 };
 
-export default BaseFooterContext;
+export default React.memo(BaseFooterContext);

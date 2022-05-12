@@ -9,4 +9,4 @@ const BaseFooterContextItem = (props) => {
     );
 };
 
-export default BaseFooterContextItem;
+export default React.memo(BaseFooterContextItem);

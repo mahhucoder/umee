@@ -34,4 +34,4 @@ BaseProduct.propTypes = {
     price: PropTypes.number.isRequired,
 };
 
-export default BaseProduct;
+export default React.memo(BaseProduct);

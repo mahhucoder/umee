@@ -30,4 +30,4 @@ BaseNewsItem.propTypes = {
     
 };
 
-export default BaseNewsItem;
+export default React.memo(BaseNewsItem);

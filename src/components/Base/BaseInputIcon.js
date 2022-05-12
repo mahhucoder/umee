@@ -21,4 +21,4 @@ const BaseInputIcon = (props) => {
     );
 };
 
-export default BaseInputIcon;
+export default React.memo(BaseInputIcon);

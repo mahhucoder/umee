@@ -20,4 +20,4 @@ const BaseSearchItem = (props) => {
     );
 };
 
-export default BaseSearchItem;
+export default React.memo(BaseSearchItem);

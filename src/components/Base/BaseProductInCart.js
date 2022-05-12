@@ -53,4 +53,4 @@ const BaseProductInCart = (props) => {
     );
 };
 
-export default BaseProductInCart;
+export default React.memo(BaseProductInCart);

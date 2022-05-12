@@ -21,4 +21,4 @@ BaseButton.propTypes = {
     width: PropTypes.number
 };
 
-export default BaseButton;
+export default React.memo(BaseButton);

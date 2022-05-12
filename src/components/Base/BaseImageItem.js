@@ -10,4 +10,4 @@ const BaseImageItem = (props) => {
     );
 };
 
-export default BaseImageItem;
+export default React.memo(BaseImageItem);

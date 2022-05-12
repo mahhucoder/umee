@@ -24,26 +24,12 @@ const BaseSocialButton = props => {
             break
     }
 
-    // const loginSocial = () => {
-    //     switch(type) {
-    //         case 'facebook':
-    //             loginWithFacebook()
-    //             break
-    //         case 'google':
-    //             loginWithGoogle()
-    //             break
-    //         default:
-    //             break
-    //     }
-    // }
-
     return (
         <div onClick={loginWithGoogle} 
             className="baseSocialButtonWrapper"
             style={{"width":size,"height":size}}    
         >
             <div className="baseSocialButtonIcon">{iconComponent}</div>
-            {/* <div className="baseSocialText">{type.toUpperCase()}</div> */}
         </div>
     );
 };
@@ -53,4 +39,4 @@ BaseSocialButton.propTypes = {
     size: PropTypes.number
 };
 
-export default BaseSocialButton;
+export default React.memo(BaseSocialButton);

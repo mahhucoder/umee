@@ -28,35 +28,38 @@ const TheCategory = () => {
     }
 
     const handleDeleteCategory = () => {
-        setIsLoading(true)
-        const promises = []
+        let textConfirm = "Bạn chắc chắn muốn xóa không ?"
+        if(window.confirm(textConfirm)){
+            setIsLoading(true)
+            const promises = []
 
-        listCategorySelected.forEach(category => {
-            const res = deleteEntity("Category",category["CategoryId"])
+            listCategorySelected.forEach(category => {
+                const res = deleteEntity("Category",category["CategoryId"])
 
-            const imageRef = ref(storage,category["CategoryImage"])
+                const imageRef = ref(storage,category["CategoryImage"])
 
-            const imageDelete = deleteObject(imageRef)
+                const imageDelete = deleteObject(imageRef)
 
-            promises.push(imageDelete)
-            promises.push(res)
-        })
+                promises.push(imageDelete)
+                promises.push(res)
+            })
 
-        Promise.all(promises).then(() => {
-            setMessage(`Bạn đã xóa thành công ${listCategorySelected.length} thể loại !`)
-            setShowMessage(true)
+            Promise.all(promises).then(() => {
+                setMessage(`Bạn đã xóa thành công ${listCategorySelected.length} thể loại !`)
+                setShowMessage(true)
 
-            setTimeout(() => {
-                setShowMessage(false)
-            },3000)
+                setTimeout(() => {
+                    setShowMessage(false)
+                },3000)
 
-            setIsLoading(false)
-            setRefresh(!refresh)
-            setListCategorySelected([])
-            setIsShowTrash(false)
-        }).catch(err => {
-            alert("Hãy F5 !")
-        })
+                setIsLoading(false)
+                setRefresh(!refresh)
+                setListCategorySelected([])
+                setIsShowTrash(false)
+            }).catch(err => {
+                alert("Hãy F5 !")
+            })
+        }
     }  
     
     const handleSearch = () => {

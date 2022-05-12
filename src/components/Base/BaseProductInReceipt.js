@@ -43,4 +43,4 @@ const BaseProductInReceipt = (props) => {
     );
 };
 
-export default BaseProductInReceipt;
+export default React.memo(BaseProductInReceipt);

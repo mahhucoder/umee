@@ -29,4 +29,4 @@ const BaseTextArea = (props) => {
     );
 };
 
-export default BaseTextArea;
+export default React.memo(BaseTextArea);

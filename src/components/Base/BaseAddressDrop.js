@@ -65,4 +65,4 @@ const BaseAddressDrop = (props) => {
     );
 };
 
-export default BaseAddressDrop;
+export default React.memo(BaseAddressDrop);

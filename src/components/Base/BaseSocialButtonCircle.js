@@ -28,4 +28,4 @@ const BaseSocialButton = (props) => {
     );
 };
 
-export default BaseSocialButton;
+export default React.memo(BaseSocialButton);

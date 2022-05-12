@@ -31,38 +31,41 @@ const TheProduct = () => {
     }
 
     const handleDeleteProduct = () => {
-        setIsLoading(true)
-        const promises = []
+        let textConfirm = "Bạn chắc chắn muốn xóa không ?"
+        if(window.confirm(textConfirm)){
+            setIsLoading(true)
+            const promises = []
 
-        listProductSelected.forEach(async(product) => {
-            const deleteProduct = deleteEntity("Product",product["ProductId"])
+            listProductSelected.forEach(async(product) => {
+                const deleteProduct = deleteEntity("Product",product["ProductId"])
 
-            const imageRef = ref(storage,product["ImageUrl"])
+                const imageRef = ref(storage,product["ImageUrl"])
 
-            const deleteImageRef = deleteObject(imageRef)
+                const deleteImageRef = deleteObject(imageRef)
 
-            const deleteListImage = deleteImageInStorage(product["ProductId"])
+                const deleteListImage = deleteImageInStorage(product["ProductId"])
 
-            promises.push(deleteImageRef)
-            promises.push(deleteProduct)
-            promises.push(deleteListImage)
-        })
+                promises.push(deleteImageRef)
+                promises.push(deleteProduct)
+                promises.push(deleteListImage)
+            })
 
-        Promise.all(promises).then(() => {
-            setMessage(`Bạn đã xóa thành công ${listProductSelected.length} sản phẩm !`)
-            setShowMessage(true)
+            Promise.all(promises).then(() => {
+                setMessage(`Bạn đã xóa thành công ${listProductSelected.length} sản phẩm !`)
+                setShowMessage(true)
 
-            setTimeout(() => {
-                setShowMessage(false)
-            },3000)
+                setTimeout(() => {
+                    setShowMessage(false)
+                },3000)
 
-            setIsLoading(false)
-            setRefresh(!refresh)
-            setListProductSelected([])
-            setIsShowTrash(false)
-        }).catch(err => {
-            alert("Hãy F5 !")
-        })
+                setIsLoading(false)
+                setRefresh(!refresh)
+                setListProductSelected([])
+                setIsShowTrash(false)
+            }).catch(err => {
+                alert("Hãy F5 !")
+            })
+        }
     }
 
     const handleSearch = () => {

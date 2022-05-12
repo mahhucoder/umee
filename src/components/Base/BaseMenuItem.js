@@ -17,4 +17,4 @@ BaseMenuItem.propTypes = {
     category: PropTypes.object
 };
 
-export default BaseMenuItem;
+export default React.memo(BaseMenuItem);

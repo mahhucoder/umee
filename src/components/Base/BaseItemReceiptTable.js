@@ -22,4 +22,4 @@ const BaseItemTable = props => {
     )
 }
 
-export default BaseItemTable;
+export default React.memo(BaseItemTable);

@@ -25,4 +25,4 @@ const BaseAdminContext = (props) => {
     );
 };
 
-export default BaseAdminContext;
+export default React.memo(BaseAdminContext);

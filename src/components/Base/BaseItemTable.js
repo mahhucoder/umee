@@ -27,13 +27,11 @@ const BaseItemTable = (props) => {
 
     return (
         <tr>
-            {fieldId == "RequestId"? null : 
-                <td className="text-align-center">
-                    <div onClick={() => selectItem(row)} className="checkboxTable">
-                        <div style={{"display":isSelected ? "block" : "none"}} className="checkboxTableInside"></div>
-                    </div>
-                </td>
-            }
+            <td className="text-align-center">
+                <div onClick={() => selectItem(row)} className="checkboxTable">
+                    <div style={{"display":isSelected ? "block" : "none"}} className="checkboxTableInside"></div>
+                </div>
+            </td>
             {fields.map((field,index) => 
                 <td key={index}  
                     style={{color:field == "Status" && row[field] == 0 ? "red" : field == "Status" && row[field] == 1 ? "green" : "#000",
@@ -60,4 +58,4 @@ const BaseItemTable = (props) => {
     );
 };
 
-export default BaseItemTable;
+export default React.memo(BaseItemTable);

@@ -17,4 +17,4 @@ const BaseCheckbox = (props) => {
     );
 };
 
-export default BaseCheckbox;
+export default React.memo(BaseCheckbox);

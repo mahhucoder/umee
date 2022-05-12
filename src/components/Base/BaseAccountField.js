@@ -76,4 +76,4 @@ BaseAccountField.propTypes = {
     
 };
 
-export default BaseAccountField;
+export default React.memo(BaseAccountField)

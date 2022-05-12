@@ -92,10 +92,11 @@
 
 .emptyTable {
     position: absolute;
-    width: 100%;
-    border-bottom:1px solid #000;
     box-sizing: border-box;
     padding:8px;
     font-size:24px;
     text-align:center;
+    width:calc(100% - 325px);
+    border-bottom:1px solid #000;
+    box-sizing: border-box;
 }

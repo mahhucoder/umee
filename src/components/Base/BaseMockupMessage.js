@@ -17,4 +17,4 @@ const BaseMockupMessage = (props) => {
     );
 };
 
-export default BaseMockupMessage;
+export default React.memo(BaseMockupMessage);

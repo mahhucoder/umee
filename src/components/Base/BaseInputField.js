@@ -45,4 +45,4 @@ BaseInputField.propTypes = {
   formik: PropTypes.object.isRequired
 };
 
-export default BaseInputField;
+export default React.memo(BaseInputField);

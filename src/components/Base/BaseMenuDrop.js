@@ -38,8 +38,4 @@ const BaseMenuDrop = props => {
     );
 };
 
-BaseMenuDrop.propTypes = {
-    // url: PropTypes.string.isRequired,
-};
-
-export default BaseMenuDrop;
+export default React.memo(BaseMenuDrop);

@@ -70,4 +70,4 @@ const BaseFilterField = (props) => {
     );
 };
 
-export default BaseFilterField;
+export default React.memo(BaseFilterField);

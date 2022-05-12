@@ -50,7 +50,7 @@ const BaseGridTable = (props) => {
                 
                 <thead>
                     <tr>
-                        { entityApi == "Request"? null : <td></td>}
+                        <td></td>
                         {fields.map((field,index) => <td key={index} className="text-align-center">{field}</td>)}
                         {entityApi == "Receipt" || entityApi == "Request"? null : <td></td>}
                     </tr>
@@ -77,4 +77,4 @@ const BaseGridTable = (props) => {
     );
 };
 
-export default BaseGridTable;
+export default React.memo(BaseGridTable);

@@ -20,4 +20,4 @@ BaseCategoryItem.propTypes = {
     text: PropTypes.string,
 };
 
-export default BaseCategoryItem;
+export default React.memo(BaseCategoryItem);

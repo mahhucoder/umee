@@ -34,4 +34,4 @@ BaseRadioGroup.propTypes = {
     listItem: PropTypes.array.isRequired
 };
 
-export default BaseRadioGroup;
+export default React.memo(BaseRadioGroup);

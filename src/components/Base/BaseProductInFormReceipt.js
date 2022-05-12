@@ -67,4 +67,4 @@ const BaseProductInFormReceipt = (props) => {
     );
 };
 
-export default BaseProductInFormReceipt;
+export default React.memo(BaseProductInFormReceipt);

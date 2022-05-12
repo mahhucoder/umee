@@ -44,7 +44,9 @@ const TheReceipt = () => {
     }
 
     const handleDeleteReceipt = () => {
-        const promisesDetail = []
+        let textConfirm = "Bạn chắc chắn muốn xóa không ?"
+        if(window.confirm(textConfirm)){
+            const promisesDetail = []
         const promisesReceipt = []
         const promisesRollback = []
 
@@ -70,7 +72,7 @@ const TheReceipt = () => {
                 .then(() => {
                     Promise.all([...promisesReceipt,...promisesRollback])
                         .then(() => {
-                            setMessage(`Bạn đã xóa thành công ${listReceiptSelected} đơn hàng !`)
+                            setMessage(`Bạn đã xóa thành công ${listReceiptSelected.length} đơn hàng !`)
                             setShowMessage(true)
                 
                             setTimeout(() => {
@@ -82,6 +84,7 @@ const TheReceipt = () => {
                         })
                 })
                 .catch((e) => console.log(e))
+            }
         }
     }
 

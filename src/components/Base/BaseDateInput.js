@@ -29,4 +29,4 @@ BaseDateInput.propTypes = {
     width: PropTypes.number
 };
 
-export default BaseDateInput;
+export default React.memo(BaseDateInput);

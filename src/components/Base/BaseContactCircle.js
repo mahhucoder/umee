@@ -21,4 +21,4 @@ const BaseContactCircle = (props) => {
     );
 };
 
-export default BaseContactCircle;
+export default React.memo(BaseContactCircle);

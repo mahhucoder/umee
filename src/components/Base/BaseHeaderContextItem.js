@@ -12,4 +12,4 @@ const BaseHeaderContextItem = (props) => {
     );
 };
 
-export default BaseHeaderContextItem;
+export default React.memo(BaseHeaderContextItem);

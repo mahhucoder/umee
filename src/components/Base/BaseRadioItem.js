@@ -22,4 +22,4 @@ BaseRadioItem.propTypes = {
     isSelected: PropTypes.bool
 };
 
-export default BaseRadioItem;
+export default React.memo(BaseRadioItem);

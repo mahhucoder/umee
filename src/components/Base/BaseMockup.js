@@ -20,4 +20,4 @@ BaseMockup.propTypes = {
     
 };
 
-export default BaseMockup;
+export default React.memo(BaseMockup);

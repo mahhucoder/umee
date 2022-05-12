@@ -65,4 +65,4 @@ BaseSlider.propTypes = {
     height: PropTypes.string.isRequired,
 };
 
-export default BaseSlider;
+export default React.memo(BaseSlider);

@@ -66,4 +66,4 @@ const BaseDropdown = (props) => {
     );
 };
 
-export default BaseDropdown
+export default React.memo(BaseDropdown)

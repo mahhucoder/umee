@@ -52,7 +52,7 @@ const PaymentPage = () => {
                 alert("Vui lòng chọn các địa chỉ !")
             
             setIsLoading(true)
-            
+
             const receiptId = Guid.create().value
             const newReceipt = {
                 "receiptId": receiptId,
@@ -68,6 +68,10 @@ const PaymentPage = () => {
             insertEntity("Receipt",newReceipt)
             .then((res) => {
                 if(res == 1){
+                    if(!id){
+                        sessionStorage.removeItem("product_id")
+                    }
+                    
                     finalReceipt(receiptId)
                 }
                 

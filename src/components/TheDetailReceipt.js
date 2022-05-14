@@ -6,6 +6,7 @@ import accounting from 'accounting'
 import BaseProductInReceipt from './Base/BaseProductInReceipt';
 import BaseButton from "./Base/BaseButton"
 import {FaCompressArrowsAlt} from "react-icons/fa"
+import { UserContext } from '../Context/UserContext';
 
 const TheDetailReceipt = (props) => {
 
@@ -13,6 +14,7 @@ const TheDetailReceipt = (props) => {
     const [receipt,setReceipt] = useState({ReceiptName:'',PhoneNumber:'',Address:'',TransportFee:0,details:[]})
     const {getDetailReceiptById,browseReceipt,updateAmount} = useContext(DataBaseContext)
     const [isLoading,setIsLoading] = useState(true)
+    const {user} = useContext(UserContext)
 
     useEffect(() => {
         getDetailReceiptById(id)
@@ -106,7 +108,7 @@ const TheDetailReceipt = (props) => {
                     </div>
                 </div>
 
-                <div className="theDetailReceiptFuc">
+                <div style={{display: user.Admin ? 'flex' : 'none'}} className="theDetailReceiptFuc">
                     {receipt["Status"] == false ? <div style={{fontSize:"24px",fontWeight:"bold"}} className="money">Đã Hủy</div> : <BaseButton method={handleCancelReceipt} width={160} border="1px solid #000" bgColor="#fff" text="Hủy Đơn" />}
                     {receipt["Status"] == null ? <BaseButton method={handleAcceptReceipt} width={160} color="#fff" text="Duyệt Đơn" /> :null }
                 </div>

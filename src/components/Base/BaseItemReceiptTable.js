@@ -3,11 +3,11 @@ import accounting from 'accounting'
 
 const BaseItemTable = props => {
 
-    const {receipt} = props
+    const {receipt,method} = props
 
     return (
         <tr>
-            <td className="text-align-center">{receipt.ReceiptId}</td>
+            <td onClick={() => method(receipt.ReceiptId)} className="text-align-center">{receipt.ReceiptId}</td>
             <td className="text-align-center">{receipt.ReceiverName}</td>
             <td className="text-align-center">{receipt.PhoneNumber}</td>
             <td className="text-align-center">{receipt.Address}</td>

@@ -5,12 +5,14 @@ import BaseCategoryItem from '../components/Base/BaseCategoryItem';
 import BaseProduct from '../components/Base/BaseProduct';
 import BaseNewsItem from '../components/Base/BaseNewsItem';
 import { DataBaseContext } from '../Context/DataBase';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = props => {
 
     const [listCategory,setListCategory] = useState([])
     const [listBestSale,setListBestSale] = useState([])
     const {fetchData,pagingProduct,news} = useContext(DataBaseContext)
+    const navigate = useNavigate()
 
     useEffect(() => {
 
@@ -41,7 +43,8 @@ const HomePage = props => {
                 
                 <div className="homeCategory">
                     {listCategory.map((category,index) => 
-                        <BaseCategoryItem 
+                        <BaseCategoryItem
+                            onClick={() => navigate(`/category/${category["CategoryId"]}`)}
                             key={index} 
                             text={category["CategoryName"]} 
                             imageUrl={category["CategoryImage"]} 

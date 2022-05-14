@@ -4,10 +4,10 @@ import "../../css/Base/BaseCategoryItem.css"
 
 const BaseCategoryItem = props => {
 
-    const {imageUrl,text} = props
+    const {imageUrl,text,onClick} = props
 
     return (
-        <div className="baseCategoryItem" style={{backgroundImage:`url(${imageUrl})`}}>
+        <div onClick={onClick} className="baseCategoryItem" style={{backgroundImage:`url(${imageUrl})`}}>
             <div className="baseCategoryBG">
                 {text}
             </div>
